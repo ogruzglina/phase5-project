@@ -1,0 +1,2 @@
+class Charger < ApplicationRecord
+end
