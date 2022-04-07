@@ -1,3 +1,3 @@
 class ChargerSerializer < ActiveModel::Serializer
-  attributes :id, :id, :type, :hours, :address, :status, :cost, :fee
+  attributes :id, :charger_type, :hours, :address, :status, :cost, :fee
 end
