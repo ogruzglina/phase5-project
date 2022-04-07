@@ -4,4 +4,7 @@ class Charger < ApplicationRecord
 
     has_many :prices, dependent: :destroy
     has_many :users, through: :prices
+
+    validates :charger_type, :hours, :address, :status, :cost, :fee, presence: true
+
 end
