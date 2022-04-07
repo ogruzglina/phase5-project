@@ -28,10 +28,10 @@ class ChargersController < ApplicationController
 
     private
     def find_charger
-        charger.find(params[:id])
+        Charger.find(params[:id])
     end
 
     def charger_params
-        params.permit(:)
+        params.permit(:charger_type, :hours, :address, :status, :cost, :fee)
     end
 end
