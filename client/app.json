@@ -17,7 +17,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ogruzglina.ChargerHood",
+      "config": {
+        "googleMapsApiKey": "AIzaSyCw508eLUxT-LBKEhJNrNJsJTQbVMMHQvU"
+      }
     },
     "android": {
       "adaptiveIcon": {

@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import HeaderTabs from '../components/HeaderTabs'
-import axios from 'axios';
+import axios from 'axios'
 
 export default function Home() {
     const [ chargers, setChargers ] = useState([]);
@@ -23,6 +23,7 @@ export default function Home() {
         <SafeAreaView>
             <HeaderTabs />
 
+        
             <View>
                 <FlatList
                     data = { chargers }
