@@ -4,7 +4,7 @@ import HeaderTabs from '../components/HeaderTabs'
 import Map from '../components/Map'
 import axios from 'axios'
 
-export default function Home() {
+export default function Home({ navigation }) {
     const [ chargers, setChargers ] = useState([]);
 
         useEffect(async () => {
@@ -23,7 +23,7 @@ export default function Home() {
     return (
         <SafeAreaView>
             <HeaderTabs />
-            <Map />
+            <Map chargers = { chargers } navigation = { navigation }/>
         
             {/* <View>
                 <FlatList
