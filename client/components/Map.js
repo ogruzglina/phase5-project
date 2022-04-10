@@ -48,7 +48,6 @@ export default function Map({ chargers, navigation }) {
           pinColor = '#4C02DE'
         >
           <Callout onPress = { () => navigation.navigate('ChargerDetails') }>
-              {/*  */}
             <Text>{ location.latitude }</Text>
             <Text>{ location.longitude }</Text>
           </Callout>
