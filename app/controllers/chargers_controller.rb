@@ -32,6 +32,6 @@ class ChargersController < ApplicationController
     end
 
     def charger_params
-        params.permit(:charger_type, :hours, :address, :status, :cost, :fee)
+        params.permit(:charger_type, :hours, :address, :status, :cost, :fee, :latitude, :longitude)
     end
 end

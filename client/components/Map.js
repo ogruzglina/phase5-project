@@ -36,13 +36,20 @@ export default function Map({ chargers, navigation }) {
         initialRegion={{
           latitude: location.latitude, 
           longitude: location.longitude,
-          latitudeDelta: 10,
-          longitudeDelta: 10
+          latitudeDelta: 85,
+          longitudeDelta: 85
         }}
       >
-          {/* { chargers.map((charger, index) => (
-          <Marker key={index} title={charger.name} coordinate={charger.coordinates} />
-           ))} */}
+          {/* { chargers.map((charger, index) => {
+            let marker = <Marker 
+                key={index} 
+                title={charger.name} 
+                coordinate={{latitude: charger.latitude, longitude: charger.longitude}} 
+                pinColor = '#4C02DE'
+            />
+            console.log(marker);
+            return marker;
+          })} */}
         <Marker 
           coordinate = {{ latitude: 40.7053, longitude: -74.0139 }}
           pinColor = '#4C02DE'

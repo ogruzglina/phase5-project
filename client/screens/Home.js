@@ -2,7 +2,6 @@ import { View, Text, SafeAreaView, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import HeaderTabs from '../components/HeaderTabs'
 import Map from '../components/Map'
-// import BottomTabs from '../components/BottomTabs'
 import axios from 'axios'
 
 export default function Home({ navigation }) {
