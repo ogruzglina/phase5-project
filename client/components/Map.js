@@ -42,15 +42,17 @@ export default function Map({ chargers, navigation }) {
       >
           { chargers.map((charger, index) => 
               <Marker 
-                key={index} 
-                title={charger.name} 
-                coordinate={{latitude: charger.latitude, longitude: charger.longitude}} 
+                key={ index } 
+                title={ charger.name } 
+                coordinate={{ latitude: charger.latitude, longitude: charger.longitude }} 
                 pinColor = '#4C02DE'
                 >
-                <Callout onPress = { () => navigation.navigate('ChargerDetails') }>
-                  <Text>{ charger.name }</Text>
+                <Callout onPress = { () => navigation.navigate('ChargerDetails', {
+                    screen: 'ChargerDetails', params: { charger: charger }}
+                )}>
+                  <Text>{ charger.charger_type }</Text>
                   <Text>{ charger.address }</Text>
-                  <Text>{ charger.status }</Text>
+                  <Text>{ charger.status ? "Status: available" : "Status: unavailible" }</Text>
                 </Callout>
               </Marker>
             )}

@@ -10,6 +10,7 @@ import ChargerReviews from '../screens/ChargerReviews'
 const Tab = createBottomTabNavigator();
 
 export default function ChargerBottomTabs() {
+  
   return (
       <Tab.Navigator initialRouteName = "ChargerDetails" screenOptions = {{headerShown: false}}>
         <Tab.Screen name = "ChargerDetails" component = { ChargerDetails }  />
