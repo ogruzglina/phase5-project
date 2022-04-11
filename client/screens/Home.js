@@ -25,7 +25,7 @@ export default function Home({ navigation }) {
         <SafeAreaView>
             <HeaderTabs />
             <Map chargers = { chargers } navigation = { navigation }/>
-            {/* <BottomTabs /> */}
+            
             {/* <View>
                 <FlatList
                     data = { chargers }
