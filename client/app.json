@@ -20,7 +20,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.ogruzglina.ChargerHood",
       "config": {
-        "googleMapsApiKey": "AIzaSyCw508eLUxT-LBKEhJNrNJsJTQbVMMHQvU"
+        "googleMapsApiKey": "API_KEY"
       }
     },
     "android": {
