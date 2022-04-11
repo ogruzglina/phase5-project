@@ -11,9 +11,9 @@ import ChargerReviews from '../screens/ChargerReviews'
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomTabs() {
+export default function HomeBottomTabs() {
   return (
-    <NavigationContainer>
+   // <NavigationContainer>
       <Tab.Navigator initialRouteName = "Home">
         <Tab.Screen name = "Home" component = { Home } />
         <Tab.Screen name = "Profile" component = { Profile } />
@@ -21,6 +21,6 @@ export default function BottomTabs() {
         <Tab.Screen name = "Direction" component = { Direction } />
         {/* <Tab.Screen name = "ChargerDetails" component = { ChargerDetails } options={{ title: 'Charger Details' }} /> */}
       </Tab.Navigator>
-    </NavigationContainer>
+   // </NavigationContainer>
   )
 }
