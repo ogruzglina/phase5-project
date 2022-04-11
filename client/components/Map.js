@@ -40,16 +40,21 @@ export default function Map({ chargers, navigation }) {
           longitudeDelta: 85
         }}
       >
-          {/* { chargers.map((charger, index) => {
-            let marker = <Marker 
+          { chargers.map((charger, index) => 
+              <Marker 
                 key={index} 
                 title={charger.name} 
                 coordinate={{latitude: charger.latitude, longitude: charger.longitude}} 
                 pinColor = '#4C02DE'
-            />
-            console.log(marker);
-            return marker;
-          })} */}
+                >
+                <Callout onPress = { () => navigation.navigate('ChargerDetails') }>
+                  <Text>{ charger.name }</Text>
+                  <Text>{ charger.address }</Text>
+                  <Text>{ charger.status }</Text>
+                </Callout>
+              </Marker>
+            )}
+
         <Marker 
           coordinate = {{ latitude: 40.7053, longitude: -74.0139 }}
           pinColor = '#4C02DE'
