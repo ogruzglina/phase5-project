@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import HeaderTabs from '../components/HeaderTabs'
 import Map from '../components/Map'
+// import BottomTabs from '../components/BottomTabs'
 import axios from 'axios'
 
 export default function Home({ navigation }) {
@@ -24,7 +25,7 @@ export default function Home({ navigation }) {
         <SafeAreaView>
             <HeaderTabs />
             <Map chargers = { chargers } navigation = { navigation }/>
-        
+            {/* <BottomTabs /> */}
             {/* <View>
                 <FlatList
                     data = { chargers }
