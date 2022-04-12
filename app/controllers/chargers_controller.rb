@@ -6,7 +6,7 @@ class ChargersController < ApplicationController
 
     def show
         charger = find_charger
-        render json: charger, status: :ok
+        render json: charger.reviews, status: :ok
     end
 
     def create

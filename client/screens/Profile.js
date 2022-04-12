@@ -1,8 +1,7 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import React from 'react'
 
-export default function Profile({ navigation, currentUser }) {
-  console.log('profileCurrUser ', currentUser)
+export default function Profile({ currentUser }) {
   
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

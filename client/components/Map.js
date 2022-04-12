@@ -7,8 +7,6 @@ export default function Map({ chargers, navigation }) {
   const [location, setLocation] = useState({longitude: 0, latitude: 0});
   const [errorMsg, setErrorMsg] = useState(null);
 
-  console.log('mapChargers', navigation)
-
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -73,7 +71,5 @@ export default function Map({ chargers, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  map: {
-    height: Dimensions.get('window').height,
-  }
+  map: { height: Dimensions.get('window').height }
 });
