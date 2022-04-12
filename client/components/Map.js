@@ -45,7 +45,7 @@ export default function Map({ chargers, navigation }) {
                 key={ index } 
                 title={ charger.name } 
                 coordinate={{ latitude: charger.latitude, longitude: charger.longitude }} 
-                pinColor = '#4C02DE'
+                pinColor = {charger.status ? "green" : "red"}
                 >
                 <Callout onPress = { () => navigation.navigate('ChargerDetails', {
                     screen: 'ChargerDetails', params: { charger: charger }}
@@ -59,7 +59,7 @@ export default function Map({ chargers, navigation }) {
 
         <Marker 
           coordinate = {{ latitude: 40.7053, longitude: -74.0139 }}
-          pinColor = '#4C02DE'
+          pinColor = 'red'
         >
           <Callout onPress = { () => navigation.navigate('ChargerDetails') }>
             <Text>{ location.latitude }</Text>
