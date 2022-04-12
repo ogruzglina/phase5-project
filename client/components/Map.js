@@ -7,6 +7,8 @@ export default function Map({ chargers, navigation }) {
   const [location, setLocation] = useState({longitude: 0, latitude: 0});
   const [errorMsg, setErrorMsg] = useState(null);
 
+  console.log('mapChargers', navigation)
+
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -23,7 +25,6 @@ export default function Map({ chargers, navigation }) {
       setLocation(currentLocation);
     })();
   }, []);
-  console.log(location)
 
   return (
     <View>
@@ -33,7 +34,7 @@ export default function Map({ chargers, navigation }) {
         showsUserLocation = { true }
         followUserLocation = { true }
         zoomEnabled = { true } 
-        initialRegion={{
+        initialRegion = {{
           latitude: location.latitude, 
           longitude: location.longitude,
           latitudeDelta: 85,
@@ -46,7 +47,7 @@ export default function Map({ chargers, navigation }) {
                 title={ charger.name } 
                 coordinate={{ latitude: charger.latitude, longitude: charger.longitude }} 
                 pinColor = {charger.status ? "green" : "red"}
-                >
+              >
                 <Callout onPress = { () => navigation.navigate('ChargerDetails', {
                     screen: 'ChargerDetails', params: { charger: charger }}
                 )}>

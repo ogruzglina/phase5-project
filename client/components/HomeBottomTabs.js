@@ -6,11 +6,20 @@ import Profile from '../screens/Profile'
 
 const Tab = createBottomTabNavigator();
 
-export default function HomeBottomTabs() {
+export default function HomeBottomTabs({ currentUser }) {
+  console.log('homebtCurrUser ', currentUser)
   return (
       <Tab.Navigator initialRouteName = "Home">
-        <Tab.Screen name = "Home" component = { Home } />
-        <Tab.Screen name = "Profile" component = { Profile } />
+        <Tab.Screen 
+          name = "Home" 
+          component = { Home } 
+          //children = { () => <Home currentUser = { currentUser }/>}
+        />
+        <Tab.Screen 
+          name = "Profile" 
+          children = { () => <Profile currentUser = { currentUser }/>}
+          // component = { Profile } 
+        />
       </Tab.Navigator>
   )
 }
