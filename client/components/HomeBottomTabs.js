@@ -7,7 +7,7 @@ import Profile from '../screens/Profile'
 const Tab = createBottomTabNavigator();
 
 export default function HomeBottomTabs({ currentUser }) {
-  console.log('homebtCurrUser ', currentUser)
+  //console.log('homebtCurrUser ', currentUser)
   return (
       <Tab.Navigator initialRouteName = "Home">
         <Tab.Screen 

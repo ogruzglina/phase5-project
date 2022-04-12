@@ -8,7 +8,6 @@ import ChargerBottomTabs from './components/ChargerBottomTabs';
 
 export default function Navigation({ currentUser }) {
   const Stack = createNativeStackNavigator();
-  console.log('navigUser', currentUser)
 
   function getHeaderTitle(route) {
     // If the focused route is not found, we need to assume it's the initial screen
@@ -35,14 +34,12 @@ export default function Navigation({ currentUser }) {
           name = "HomeBottomTabs" 
           //component = { HomeBottomTabs }
           children = { () => <HomeBottomTabs currentUser = { currentUser } />}
-          //currentUser = { currentUser } setCurrentUser = { setCurrentUser } 
           options={{ headerShown: false }}
         />
         <Stack.Screen 
           name = "ChargerDetails" 
           component = { ChargerBottomTabs } 
-          // options={{ headerBackTitle: 'Map', title: 'Charger Details' }} 
-          options={({ route }) => ({
+          options={ ({ route }) => ({
             headerTitle: getHeaderTitle(route),
             headerBackTitle: 'Map',
             title: 'Charger Details'
