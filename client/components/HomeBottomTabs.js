@@ -3,11 +3,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Home from '../screens/Home'
 import Profile from '../screens/Profile'
+import AddChargerForm from '../screens/AddChargerForm';
 
 const Tab = createBottomTabNavigator();
 
 export default function HomeBottomTabs({ currentUser }) {
-  //console.log('homebtCurrUser ', currentUser)
+  console.log('homebtCurrUser ', currentUser);
+
   return (
       <Tab.Navigator initialRouteName = "Home">
         <Tab.Screen 
@@ -19,6 +21,12 @@ export default function HomeBottomTabs({ currentUser }) {
           name = "Profile" 
           children = { () => <Profile currentUser = { currentUser }/>}
           // component = { Profile } 
+          
+        />
+        <Tab.Screen 
+          name = "AddChargerForm" 
+          children = { () => <AddChargerForm currentUserId = { currentUser.id }/>}
+
         />
       </Tab.Navigator>
   )
