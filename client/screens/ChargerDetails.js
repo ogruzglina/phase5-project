@@ -5,7 +5,6 @@ export default function ChargerDetails({ navigation, route }) {
   const { charger_type, address, cost, fee, hours, status } = route.params.charger;
   const chargerStatus = status ? "available" : "not availible";
   console.log('chargerRoute', route.params);
-  console.log('chargerNavig', navigation);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export default function Home({ navigation, route }) {
     console.log('home route', route);
-    //console.log('home curUserId', curUserId);
+  //console.log('nav - home', navigation.getState())
 
     const [ chargers, setChargers ] = useState([]);
  
@@ -13,7 +13,6 @@ export default function Home({ navigation, route }) {
         try {
             const res = await axios.get('http://localhost:3000/chargers');
             const chargersList = await res.data;
-            // console.log('charger', chargersList);
             
             setChargers(chargersList);
         } catch (e) {

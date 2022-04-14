@@ -8,15 +8,16 @@ import ChargerReviews from '../screens/ChargerReviews'
 
 const Tab = createBottomTabNavigator();
 
-export default function ChargerBottomTabs({ route }) {
+export default function ChargerBottomTabs({ route, navigation }) {
   const charger = route.params.params.charger;
-  console.log('chabtab route.params', route.params)
+  const currentUserId = route.params.currentUser.id;
+  console.log('chabtab route', route)
   
   return (
       <Tab.Navigator initialRouteName = "ChargerDetails" screenOptions = {{headerShown: false}}>
         <Tab.Screen name = "ChargerDetails" component = { ChargerDetails } />
         <Tab.Screen name = "Direction" component = { Direction } />
-        <Tab.Screen name = "ChargerReviews" component = { ChargerReviews } initialParams={{ charger: charger }}/>
+        <Tab.Screen name = "ChargerReviews" component = { ChargerReviews } initialParams={{ charger: charger, currentUserId: currentUserId }}/>
         {/* <Tab.Screen name = "Profile" component = { Profile } /> */}
       </Tab.Navigator>
   )

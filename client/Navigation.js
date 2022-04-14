@@ -39,6 +39,7 @@ export default function Navigation({ currentUser }) {
         <Stack.Screen 
           name = "ChargerDetails" 
           component = { ChargerBottomTabs } 
+          initialParams={{ currentUser }}
           options={ ({ route }) => ({
             headerTitle: getHeaderTitle(route),
             headerBackTitle: 'Map',

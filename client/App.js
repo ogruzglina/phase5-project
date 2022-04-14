@@ -7,14 +7,14 @@ export default function App() {
 
   const tempUserId = 13;
     useEffect(async () => {
-        try {
-            const res = await axios.get(`http://localhost:3000/users/${tempUserId}`);
-            const user = await res.data;
+      try {
+        const res = await axios.get(`http://localhost:3000/users/${tempUserId}`);
+        const user = await res.data;
 
-            setCurrentUser(user);
-        } catch (e) {
-            console.log(e);
-        }
+        setCurrentUser(user);
+      } catch (e) {
+        console.log(e);
+      }
     }, []);
 
   return <Navigation currentUser = { currentUser } /> ;

@@ -3,9 +3,12 @@ import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import React, { useEffect, useState } from 'react';
 import * as Location from 'expo-location';
 
-export default function Map({ chargers, navigation }) {
+export default function Map({ chargers, navigation, route }) {
   const [location, setLocation] = useState({longitude: 0, latitude: 0});
   const [errorMsg, setErrorMsg] = useState(null);
+
+  //console.log('route - map', route)
+  //console.log('nav - map', navigation.getState())
 
   useEffect(() => {
     (async () => {
@@ -39,22 +42,22 @@ export default function Map({ chargers, navigation }) {
           longitudeDelta: 85
         }}
       >
-          { chargers.map((charger, index) => 
-              <Marker 
-                key={ index } 
-                title={ charger.name } 
-                coordinate={{ latitude: charger.latitude, longitude: charger.longitude }} 
-                pinColor = {charger.status ? "green" : "red"}
-              >
-                <Callout onPress = { () => navigation.navigate('ChargerDetails', {
-                    screen: 'ChargerDetails', params: { charger: charger }}
-                )}>
-                  <Text>{ charger.charger_type }</Text>
-                  <Text>{ charger.address }</Text>
-                  <Text>{ charger.status ? "Status: available" : "Status: unavailible" }</Text>
-                </Callout>
-              </Marker>
-            )}
+        { chargers.map((charger, index) => 
+            <Marker 
+              key={ index } 
+              title={ charger.name } 
+              coordinate={{ latitude: charger.latitude, longitude: charger.longitude }} 
+              pinColor = {charger.status ? "green" : "red"}
+            >
+              <Callout onPress = { () => navigation.navigate('ChargerDetails', {
+                  screen: 'ChargerDetails', params: { charger: charger }}
+              )}>
+                <Text>{ charger.charger_type }</Text>
+                <Text>{ charger.address }</Text>
+                <Text>{ charger.status ? "Status: available" : "Status: unavailible" }</Text>
+              </Callout>
+            </Marker>
+        )}
 
         <Marker 
           coordinate = {{ latitude: 40.7053, longitude: -74.0139 }}
