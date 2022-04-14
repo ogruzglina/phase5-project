@@ -42,22 +42,22 @@ export default function Map({ chargers, navigation, route }) {
           longitudeDelta: 85
         }}
       >
-          { chargers.map((charger, index) => 
-              <Marker 
-                key={ index } 
-                title={ charger.name } 
-                coordinate={{ latitude: charger.latitude, longitude: charger.longitude }} 
-                pinColor = {charger.status ? "green" : "red"}
-              >
-                <Callout onPress = { () => navigation.navigate('ChargerDetails', {
-                    screen: 'ChargerDetails', params: { charger: charger }}
-                )}>
-                  <Text>{ charger.charger_type }</Text>
-                  <Text>{ charger.address }</Text>
-                  <Text>{ charger.status ? "Status: available" : "Status: unavailible" }</Text>
-                </Callout>
-              </Marker>
-            )}
+        { chargers.map((charger, index) => 
+            <Marker 
+              key={ index } 
+              title={ charger.name } 
+              coordinate={{ latitude: charger.latitude, longitude: charger.longitude }} 
+              pinColor = {charger.status ? "green" : "red"}
+            >
+              <Callout onPress = { () => navigation.navigate('ChargerDetails', {
+                  screen: 'ChargerDetails', params: { charger: charger }}
+              )}>
+                <Text>{ charger.charger_type }</Text>
+                <Text>{ charger.address }</Text>
+                <Text>{ charger.status ? "Status: available" : "Status: unavailible" }</Text>
+              </Callout>
+            </Marker>
+        )}
 
         <Marker 
           coordinate = {{ latitude: 40.7053, longitude: -74.0139 }}

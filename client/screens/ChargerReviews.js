@@ -9,8 +9,6 @@ export default function ChargerReviews({ route }) {
   const [ currentChargerReviews, setCurrentChargerReviews ] = useState(null);
   const [ newReview, setNewReview ] = useState(null);
 
-  console.log('route.params - chargerReviews ', route.params)
-
   useEffect(async () => {
     try {
         const res = await axios.get(`http://localhost:3000/chargers/${chargerId}`);
@@ -36,22 +34,20 @@ export default function ChargerReviews({ route }) {
   function displayReviewInfo() {
     if (currentChargerReviews !== null){
       const showingReviewsInfo = currentChargerReviews.map( r => {
-        console.log('r', r);
-       return <View key = {r.reviewId} style = {{ marginBottom: 20 }}>
-          <View style = {{ marginBottom: 5, }}>
-            <Image style={styles.tinyLogo} source={{ url: r.userAvatar }} />
-            <Text>{r.userUsername}</Text>
-          </View>
-          <Text>{r.review}</Text>
+      return <View key = {r.reviewId} style = {{ marginBottom: 20 }}>
+        <View style = {{ marginBottom: 5, }}>
+          <Image style={styles.tinyLogo} source={{ url: r.userAvatar }} />
+          <Text>{r.userUsername}</Text>
         </View>
-       } );
+        <Text>{r.review}</Text>
+      </View>
+      } );
 
       return showingReviewsInfo;
-    }//style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    }
   }
 
   async function handleSubmit() {
-    console.log('submit', newReview);
     const newReviewObj = {
       review: newReview,
       charger_id: chargerId,
@@ -60,27 +56,15 @@ export default function ChargerReviews({ route }) {
 
     axios.post(`http://localhost:3000/reviews`, newReviewObj)
       .then(res => { 
-          console.log('res.data ', res.data);
+        const addedReview = {
+          review: res.data.review,
+          reviewId: res.data.id,
+          userAvatar: res.data.user.avatar,
+          userId: res.data.id,
+          userUsername: res.data.user.userUserName
+        };
 
-    //       "review": "Blabla",
-    // "reviewId": 6,
-    // "userAvatar": "https://randomuser.me/api/portraits/thumb/women/3.jpg",
-    // "userId": 13,
-    // "userUsername": "mmarks",
-
-          const addedReview = {
-            review: res.data.review,
-            reviewId: res.data.id,
-            userAvatar: res.data.user.avatar,
-            userId: res.data.id,
-            userUsername: res.data.user.userUserName
-          };
-          //const addedReview = res.data;
-          setCurrentChargerReviews(prevReviews => {
-            return ([...prevReviews, addedReview])
-          });
-          //setNewChargerId(res.data);
-          //onAddCharger(res.data) 
+        setCurrentChargerReviews( prevReviews => [...prevReviews, addedReview]);
       })
       .catch(function(error){
           if (error.response) {
@@ -88,32 +72,31 @@ export default function ChargerReviews({ route }) {
           }
       });
 
-      setNewReview(null);
-    }
-console.log('currentChargerReviews', currentChargerReviews)
+    setNewReview(null);
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <View >
         { displayReviewInfo() }
       </View>
+      
       <View style = {styles.footer}>
         <View style={styles.inputContainer}>
           <TextInput 
             placeholder = 'Add review' 
-           
             onChangeText = { (e) => setNewReview(e) } 
             name = 'chargerType'
             value = { newReview } 
           />
         </View>
         <View >
-         <Button  
+          <Button  
             title="Add"
             color = 'green'
             onPress = { () => handleSubmit() } 
-        />
-                </View>
+          />
+        </View>
       </View>
     </SafeAreaView>
   );

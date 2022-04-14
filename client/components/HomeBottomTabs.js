@@ -22,7 +22,6 @@ export default function HomeBottomTabs({ currentUser }) {
           name = "Profile" 
           children = { () => <Profile currentUser = { currentUser }/>}
           // component = { Profile } 
-          
         />
         <Tab.Screen 
           name = "AddChargerForm" 
