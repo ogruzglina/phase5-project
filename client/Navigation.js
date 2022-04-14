@@ -26,7 +26,7 @@ export default function Navigation({ currentUser }) {
         return 'Direction';
     }
   }
-    
+    console.log('nav currentUser - ', currentUser)
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName = "HomeBottomTabs" >
@@ -48,4 +48,4 @@ export default function Navigation({ currentUser }) {
       </Stack.Navigator>
     </NavigationContainer>
   )
-}
+} 
