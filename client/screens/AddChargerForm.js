@@ -6,24 +6,18 @@ import axios from 'axios'
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
-export default function AddChargerForm({navigation, currentUserId}) {
-    
-            
-            //status: true,
-           
-           // latitude: 0,
-           // longitude: 0
-    
+export default function AddChargerForm({ navigation, currentUserId }) {    
     const [ chargerType, setChargerType ] = useState("");
     const [ hours, setHours ] = useState("");
     const [ address, setAddress ] = useState("");
     const [ cost, setCost ] = useState(0);
     const [ fee, setFee] = useState(0);
+    const [ newChargerId, setNewChargerId ] = useState(null);
+
     
     async function handleSubmit(e) {
         let coordinates = await Location.geocodeAsync(address);
-        console.log('coordinates', coordinates)
-        console.log('coordinates.latitude', coordinates[0].latitude)
+        //let chargerId;
 
         if (coordinates !== null) {
             const newCharger = {
@@ -38,59 +32,63 @@ export default function AddChargerForm({navigation, currentUserId}) {
             }
             console.log('submit', newCharger);
 
-            // useEffect(async () => {
-            //     try {
-                    // const res = await 
-                axios.post(`http://localhost:3000/chargers`, newCharger)
-                    .then(res => { 
-                        console.log(res)
-                        //onAddAnswer(res.data) 
-                    })
-                    .catch(function(error){
-                        if(error.response) {
-                            console.log(error.response.data.errors);
-                        }
-                    });
+            axios.post(`http://localhost:3000/chargers`, newCharger)
+                .then(res => { 
+                    console.log('res.data.id ', res.data.id);
+                    setNewChargerId(res.data.id);
+                    //onAddCharger(res.data) 
+                })
+                .catch(function(error){
+                    if (error.response) {
+                        console.log(error.response.data.errors);
+                    }
+                });
 
+            // if (chargerId !== null) {
+            //     console.log('chargerId for put ---', chargerId)
 
-            //         const reviews = await res.data;
-          
-            //         const reviewsUsers = reviews.map( review => { 
-            //           return {
-            //             review: review.review,
-            //             reviewId: review.id,
-            //             userId: review.user.id,
-            //             userAvatar: review.user.avatar,
-            //             userUsername: review.user.username
-            //           };
+            //     axios.put(`http://localhost:3000/users/${currentUserId}`, { charger_id: chargerId })
+            //         .then(updatedUser => { 
+            //             console.log('updated user data - ', updatedUser.data)
+            //             //onAddCharger(res.data) 
+            //         })
+            //         .catch(function(error){
+            //             if(error.response) {
+            //                 console.log(error.response.data.errors);
+            //             }
             //         });
-                    
-            //         setCurrentChargerReviews(reviewsUsers);
-            //     } catch (e) {
-            //         console.log(e);
-            //     }
-            //   }, []);
-
+            // }
             // setChargerType("");
             // setHours("");
             // setAddress("");
             // setCost(0);
             // setFee(0);
         }
-        //e.preventDefault();
-
-        // axios.post('/user_answers', formData)
-        //     .then(res => { onAddAnswer(res.data) })
-        //     .catch(function(error){
-        //         if(error.response) {
-        //             console.log(error.response.data.errors);
-        //         }
-        //     });
-
-        // setHasAnswered(true);
-        // e.target.reset();
-        // setFormData(defaultFormData)
     }
+
+    console.log('chargerId for put ---', newChargerId);
+
+    useEffect(async () => {
+        //if (newChargerId !== null) {
+            axios.put(`http://localhost:3000/users/${currentUserId}`, { charger_id: newChargerId })
+                .then(updatedUser => { 
+                    console.log('updated user data - ', updatedUser.data)
+                    //onAddCharger(res.data) 
+                })
+                .catch(function(error){
+                    console.log('ERROR', error)
+                    if (error.request) {
+                        console.log('error request - ',error.request);
+                        //console.log(error.response.data.errors);
+                    }
+                    if (error.response) {
+                        console.log('error put - ',error.response);
+                        //console.log(error.response.data.errors);
+                    }
+                });
+       // }
+    }, [newChargerId]);
+
   return (
     <View>
         <View >
