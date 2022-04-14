@@ -15,7 +15,7 @@ export default function HomeBottomTabs({ currentUser }) {
         <Tab.Screen 
           name = "Home" 
           component = { Home } 
-          //initialParams={{ curUserId: currentUser.id }}
+          //initialParams={{ currentUser }}
           //children = { () => <Home currentUserId = { currentUser }/>}
         />
         <Tab.Screen 

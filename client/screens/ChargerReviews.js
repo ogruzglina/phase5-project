@@ -5,41 +5,46 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ChargerReviews({ route }) {
   const chargerId = route.params.charger.id;
+  const currentUserId = route.params.currentUserId;
   const [ currentChargerReviews, setCurrentChargerReviews ] = useState(null);
-  const [ newReview, setNewReview ] = useState(null)
+  const [ newReview, setNewReview ] = useState(null);
 
-    useEffect(async () => {
-      try {
-          const res = await axios.get(`http://localhost:3000/chargers/${chargerId}`);
-          const reviews = await res.data;
+  console.log('route.params - chargerReviews ', route.params)
 
-          const reviewsUsers = reviews.map( review => { 
-            return {
-              review: review.review,
-              reviewId: review.id,
-              userId: review.user.id,
-              userAvatar: review.user.avatar,
-              userUsername: review.user.username
-            };
-          });
-          
-          setCurrentChargerReviews(reviewsUsers);
-      } catch (e) {
-          console.log(e);
-      }
-    }, []);
+  useEffect(async () => {
+    try {
+        const res = await axios.get(`http://localhost:3000/chargers/${chargerId}`);
+        const reviews = await res.data;
+
+        const reviewsUsers = reviews.map( review => { 
+          return {
+            review: review.review,
+            reviewId: review.id,
+            userId: review.user.id,
+            userAvatar: review.user.avatar,
+            userUsername: review.user.username,
+            chargerId: chargerId
+          };
+        });
+        
+        setCurrentChargerReviews(reviewsUsers);
+    } catch (e) {
+        console.log(e);
+    }
+  }, []);
 
   function displayReviewInfo() {
     if (currentChargerReviews !== null){
-      const showingReviewsInfo = currentChargerReviews.map( r => 
-        <View key = {r.reviewId} style = {{ marginBottom: 20 }}>
+      const showingReviewsInfo = currentChargerReviews.map( r => {
+        console.log('r', r);
+       return <View key = {r.reviewId} style = {{ marginBottom: 20 }}>
           <View style = {{ marginBottom: 5, }}>
             <Image style={styles.tinyLogo} source={{ url: r.userAvatar }} />
             <Text>{r.userUsername}</Text>
           </View>
           <Text>{r.review}</Text>
         </View>
-      );
+       } );
 
       return showingReviewsInfo;
     }//style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -47,26 +52,45 @@ export default function ChargerReviews({ route }) {
 
   async function handleSubmit() {
     console.log('submit', newReview);
+    const newReviewObj = {
+      review: newReview,
+      charger_id: chargerId,
+      user_id: currentUserId
+    };
 
-    // axios.post(`http://localhost:3000/reviews`, newCharger)
-    //   .then(res => { 
-    //       console.log('res.data.id ', res.data.id);
-    //       setNewChargerId(res.data.id);
-    //       //onAddCharger(res.data) 
-    //   })
-    //   .catch(function(error){
-    //       if (error.response) {
-    //           console.log(error.response.data.errors);
-    //       }
-    //   });
+    axios.post(`http://localhost:3000/reviews`, newReviewObj)
+      .then(res => { 
+          console.log('res.data ', res.data);
 
-      // setNewReview(null);
-      // setHours("");
-      // setAddress("");
-      // setCost(null);
-      // setFee(null);
+    //       "review": "Blabla",
+    // "reviewId": 6,
+    // "userAvatar": "https://randomuser.me/api/portraits/thumb/women/3.jpg",
+    // "userId": 13,
+    // "userUsername": "mmarks",
+
+          const addedReview = {
+            review: res.data.review,
+            reviewId: res.data.id,
+            userAvatar: res.data.user.avatar,
+            userId: res.data.id,
+            userUsername: res.data.user.userUserName
+          };
+          //const addedReview = res.data;
+          setCurrentChargerReviews(prevReviews => {
+            return ([...prevReviews, addedReview])
+          });
+          //setNewChargerId(res.data);
+          //onAddCharger(res.data) 
+      })
+      .catch(function(error){
+          if (error.response) {
+              console.log(error.response.data.errors);
+          }
+      });
+
+      setNewReview(null);
     }
-
+console.log('currentChargerReviews', currentChargerReviews)
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

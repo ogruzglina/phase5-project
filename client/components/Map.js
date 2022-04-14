@@ -3,9 +3,12 @@ import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import React, { useEffect, useState } from 'react';
 import * as Location from 'expo-location';
 
-export default function Map({ chargers, navigation }) {
+export default function Map({ chargers, navigation, route }) {
   const [location, setLocation] = useState({longitude: 0, latitude: 0});
   const [errorMsg, setErrorMsg] = useState(null);
+
+  //console.log('route - map', route)
+  //console.log('nav - map', navigation.getState())
 
   useEffect(() => {
     (async () => {

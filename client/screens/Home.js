@@ -6,6 +6,8 @@ import axios from 'axios'
 export default function Home({ navigation, route }) {
     console.log('home route', route);
     //console.log('home curUserId', curUserId);
+   
+  //console.log('nav - home', navigation.getState())
 
     const [ chargers, setChargers ] = useState([]);
  
