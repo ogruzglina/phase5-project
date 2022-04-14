@@ -10,14 +10,13 @@ export default function AddChargerForm({ navigation, currentUserId }) {
     const [ chargerType, setChargerType ] = useState("");
     const [ hours, setHours ] = useState("");
     const [ address, setAddress ] = useState("");
-    const [ cost, setCost ] = useState(0);
-    const [ fee, setFee] = useState(0);
+    const [ cost, setCost ] = useState(null);
+    const [ fee, setFee] = useState(null);
     const [ newChargerId, setNewChargerId ] = useState(null);
 
     
     async function handleSubmit(e) {
         let coordinates = await Location.geocodeAsync(address);
-        //let chargerId;
 
         if (coordinates !== null) {
             const newCharger = {
@@ -44,25 +43,11 @@ export default function AddChargerForm({ navigation, currentUserId }) {
                     }
                 });
 
-            // if (chargerId !== null) {
-            //     console.log('chargerId for put ---', chargerId)
-
-            //     axios.put(`http://localhost:3000/users/${currentUserId}`, { charger_id: chargerId })
-            //         .then(updatedUser => { 
-            //             console.log('updated user data - ', updatedUser.data)
-            //             //onAddCharger(res.data) 
-            //         })
-            //         .catch(function(error){
-            //             if(error.response) {
-            //                 console.log(error.response.data.errors);
-            //             }
-            //         });
-            // }
-            // setChargerType("");
-            // setHours("");
-            // setAddress("");
-            // setCost(0);
-            // setFee(0);
+            setChargerType("");
+            setHours("");
+            setAddress("");
+            setCost(null);
+            setFee(null);
         }
     }
 
@@ -103,24 +88,28 @@ export default function AddChargerForm({ navigation, currentUserId }) {
                 <TextInput 
                     placeholder = 'Address' 
                     style = {styles.input} 
-                    onChangeText = { (e) => setAddress(e) } 
+                    onChangeText = { (e) => setAddress(e) }
+                    value = { address } 
                 />
                 <TextInput 
                     placeholder = 'Working hours (for ex.: 07.00 - 19.00)' 
                     style = {styles.input} 
                     onChangeText = { (e) => setHours(e) }
+                    value = { hours }
                 />
                 <TextInput 
                     placeholder = 'Cost electricity per hr' 
                     style = {styles.input} 
                     onChangeText = { (e) => setCost(e) }
                     keyboardType="numeric" 
+                    value = { cost }
                 />
                 <TextInput 
                     placeholder = 'Fee' 
                     style = {styles.input} 
                     onChangeText = { (e) => setFee(e) }
                     keyboardType="numeric"
+                    value = { fee }
                 />
             </View>
             <View style = {{ marginTop: '10%' }}>

@@ -3,7 +3,10 @@ import React, { useEffect, useState } from 'react'
 import Map from '../components/Map'
 import axios from 'axios'
 
-export default function Home({ navigation }) {
+export default function Home({ navigation, route }) {
+    console.log('home route', route);
+    //console.log('home curUserId', curUserId);
+
     const [ chargers, setChargers ] = useState([]);
  
     useEffect(async () => {

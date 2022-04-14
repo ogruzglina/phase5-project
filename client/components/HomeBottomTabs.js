@@ -15,7 +15,8 @@ export default function HomeBottomTabs({ currentUser }) {
         <Tab.Screen 
           name = "Home" 
           component = { Home } 
-          //children = { () => <Home currentUser = { currentUser }/>}
+          //initialParams={{ curUserId: currentUser.id }}
+          //children = { () => <Home currentUserId = { currentUser }/>}
         />
         <Tab.Screen 
           name = "Profile" 
@@ -26,7 +27,6 @@ export default function HomeBottomTabs({ currentUser }) {
         <Tab.Screen 
           name = "AddChargerForm" 
           children = { () => <AddChargerForm currentUserId = { currentUser.id }/>}
-
         />
       </Tab.Navigator>
   )
