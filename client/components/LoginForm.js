@@ -27,7 +27,14 @@ export default function LoginForm() {
               autoCorrect = { false }
               keyboardType = 'email-address'
               textContentType = 'emailAddress'
-              style = { styles.input } 
+              style = {[
+                styles.input, 
+                { borderColor: 
+                    values.email.length < 1 || Validator.validate(values.email) 
+                      ? '#aaa' 
+                      : 'red' 
+                }
+              ]} 
               onChangeText = { handleChange ('email') }
               onBlur = { handleBlur('email') }
               value = { values.email } 
@@ -38,7 +45,14 @@ export default function LoginForm() {
               autoCorrect = { false }
               secureTextEntry = { true }
               textContentType = 'password'
-              style = { styles.input } 
+              style = {[
+                styles.input, 
+                { borderColor: 
+                    1 > values.password.length || values.password.length >= 6 
+                      ? '#aaa' 
+                      : 'red' 
+                }
+              ]} 
               onChangeText = { handleChange ('password') }
               onBlur = { handleBlur('password') }
               value = { values.password } 
@@ -47,7 +61,11 @@ export default function LoginForm() {
               <Text style = {{color: 'blue'}}>Forgot password?</Text>
             </View>
 
-            <Pressable style = { styles.button } onPress = { handleSubmit }>
+            <Pressable 
+              style = { styles.button(isValid) } 
+              onPress = { handleSubmit }
+              disabled = { !isValid } 
+            >
               <Text style = {{ fontSize: 18 }}>Log In</Text>
             </Pressable>
 
@@ -77,16 +95,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
   },
-  button: {
+  button: (isValid) => ({
     borderWidth: 1,
     borderColor: 'yellow',
-    backgroundColor: 'yellow',
+    backgroundColor: isValid ? 'yellow' : 'red',
     alignItems: 'center',
     justifyContent: 'center',
     height: 45,
     borderRadius: 30,
     margin: 10,
-  },
+  }),
   signupContainer: {
     flexDirection: 'row',
     width: '100%',
