@@ -18,10 +18,7 @@ export default function ChargerDetails({ navigation, route }) {
   }
   console.log('chargerRoute', route.params);
 
-  console.log('isAvailable', isAvailable);
-
   useEffect(async () => {
-    console.log('isAvailable in useEffect', isAvailable);
     axios.put(`http://localhost:3000/chargers/${id}`, { status: isAvailable })
       .then( updatedCharger => { 
         console.log('updated charger data - ', updatedCharger.data)
@@ -30,10 +27,10 @@ export default function ChargerDetails({ navigation, route }) {
       .catch( function(error) {
         console.log('ERROR', error)
         if (error.request) {
-            console.log('error request - ', error.request.XMLHttpRequest);
+            console.log('error request - ', error.request);
         }
         if (error.response) {
-            console.log('error put - ', error.response);
+            console.log('error response - ', error.response);
         }
       });
   }, [isAvailable]);
