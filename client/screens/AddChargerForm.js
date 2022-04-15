@@ -32,15 +32,14 @@ export default function AddChargerForm({ navigation, currentUserId }) {
             console.log('submit', newCharger);
 
             axios.post(`http://localhost:3000/chargers`, newCharger)
-                .then(res => { 
-                    console.log('res.data new charger ', res.data);
-                    console.log('id new charger ', res.data.id);
-                    setNewChargerId(res.data.id);
-                    //onAddCharger(res.data) 
-                })
+                .then(res => setNewChargerId(res.data.id))
                 .catch(function(error){
+                    console.log('ERROR ', error);
+                    if (error.request) {
+                        console.log(error.request);
+                    }
                     if (error.response) {
-                        console.log(error.response.data.errors);
+                        console.log(error.response);
                     }
                 });
 
