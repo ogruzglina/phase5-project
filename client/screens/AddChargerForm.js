@@ -33,7 +33,8 @@ export default function AddChargerForm({ navigation, currentUserId }) {
 
             axios.post(`http://localhost:3000/chargers`, newCharger)
                 .then(res => { 
-                    console.log('res.data.id ', res.data.id);
+                    console.log('res.data new charger ', res.data);
+                    console.log('id new charger ', res.data.id);
                     setNewChargerId(res.data.id);
                     //onAddCharger(res.data) 
                 })
@@ -43,11 +44,11 @@ export default function AddChargerForm({ navigation, currentUserId }) {
                     }
                 });
 
-            setChargerType("");
-            setHours("");
-            setAddress("");
-            setCost(null);
-            setFee(null);
+            // setChargerType("");
+            // setHours("");
+            // setAddress("");
+            // setCost(null);
+            // setFee(null);
         }
     }
 

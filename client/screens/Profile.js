@@ -12,11 +12,12 @@ export default function Profile({ currentUser, navigation }) {
       <Text>{ currentUser.username }</Text>
       <Text>{ currentUser.email }</Text>
       <Text>{ currentUser.charger_id ? "have a charger " : null }</Text>
+
       <Button 
-        // style = {{ marginTop: 250 }} 
         title="Add a Charger"
         color = 'green'
-        onPress = { () => navigation.navigate('AddChargerForm')} />
+        onPress = { () => navigation.navigate('AddChargerForm')} 
+      />
     </View>
   )
 }
