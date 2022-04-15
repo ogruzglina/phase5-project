@@ -16,7 +16,7 @@ class ChargersController < ApplicationController
 
     def update
         charger = find_charger
-        charger.update(charger_params)
+        charger.update!(charger_params)
         render json: charger, status: :ok
     end
 
