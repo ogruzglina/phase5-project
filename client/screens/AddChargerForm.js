@@ -78,6 +78,7 @@ export default function AddChargerForm({ navigation, currentUserId }) {
             <View style = {{ marginLeft: '8%', marginTop: '40%'}}>
                 <TextInput 
                     placeholder = 'Charger type' 
+                    autoFocus = { true }
                     style = {styles.input} 
                     onChangeText = { (e) => setChargerType(e) }
                     name = 'chargerType'
