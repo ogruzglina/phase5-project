@@ -44,35 +44,33 @@ export default function AddChargerForm({ navigation, currentUserId }) {
                     }
                 });
 
-            // setChargerType("");
-            // setHours("");
-            // setAddress("");
-            // setCost(null);
-            // setFee(null);
+            setChargerType("");
+            setHours("");
+            setAddress("");
+            setCost(null);
+            setFee(null);
         }
     }
 
     console.log('chargerId for put ---', newChargerId);
 
     useEffect(async () => {
-        //if (newChargerId !== null) {
-            axios.put(`http://localhost:3000/users/${currentUserId}`, { charger_id: newChargerId })
-                .then(updatedUser => { 
-                    console.log('updated user data - ', updatedUser.data)
-                    //onAddCharger(res.data) 
-                })
-                .catch(function(error){
-                    console.log('ERROR', error)
-                    if (error.request) {
-                        console.log('error request - ',error.request);
-                        //console.log(error.response.data.errors);
-                    }
-                    if (error.response) {
-                        console.log('error put - ',error.response);
-                        //console.log(error.response.data.errors);
-                    }
-                });
-       // }
+        axios.put(`http://localhost:3000/users/${currentUserId}`, { charger_id: newChargerId })
+            .then(updatedUser => { 
+                console.log('updated user data - ', updatedUser.data)
+                //onAddCharger(res.data) 
+            })
+            .catch(function(error){
+                console.log('ERROR', error)
+                if (error.request) {
+                    console.log('error request - ',error.request);
+                    //console.log(error.response.data.errors);
+                }
+                if (error.response) {
+                    console.log('error put - ',error.response);
+                    //console.log(error.response.data.errors);
+                }
+            });
     }, [newChargerId]);
 
   return (
