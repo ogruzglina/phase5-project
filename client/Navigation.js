@@ -6,6 +6,7 @@ import ChargerDetails from './screens/ChargerDetails'
 import HomeBottomTabs from './components/HomeBottomTabs';
 import ChargerBottomTabs from './components/ChargerBottomTabs';
 import Login from './screens/Login';
+import Signup from './screens/Signup';
 
 export default function Navigation({ currentUser }) {
   const Stack = createNativeStackNavigator();
@@ -31,9 +32,14 @@ export default function Navigation({ currentUser }) {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName = "Login" >
-      <Stack.Screen 
+        <Stack.Screen 
           name = "Login" 
           component = { Login }
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name = "Signup" 
+          component = { Signup }
           options={{ headerShown: false }}
         />
         <Stack.Screen 

@@ -4,26 +4,45 @@ import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
 import Validator from 'email-validator';
 
-export default function LoginForm({ navigation }) {
-  const LoginFormSchema = Yup.object().shape({
+export default function SignupForm({ navigation }) {
+  const SignupFormSchema = Yup.object().shape({
+    username: Yup.string().required().min(3, 'A username is required'),
     email: Yup.string().email().required('An email is required'),
-    password: Yup.string().required().min(6, 'Your password has to have at least 6 characteres')
+    password: Yup.string().required().min(6, 'Your password has to have at least 6 characteres'),
+    passwordConfirmation: Yup.string().required().min(6, 'Your password has to have at least 6 characteres'),
   });
 
   return (
     <View style = { styles.wrapper} >
       <Formik
-        initialValues = {{ email: '', password: ''}}
+        initialValues = {{ username: '', email: '', password: '', passwordConfirmation: '' }}
         onSubmit = { values => {console.log('formik values ',values) }}
-        validationSchema = { LoginFormSchema }
+        validationSchema = { SignupFormSchema }
         validateOnMount = { true }
       >
         { ({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
           <>
             <TextInput 
-              placeholder = 'Username or Email' 
+              placeholder = 'Username' 
               autoCapitalize = 'none'
               autoFocus = { true }
+              autoCorrect = { false }
+              textContentType = 'username'
+              style = {[
+                styles.input, 
+                { borderColor: 
+                    1 > values.username.length || values.username.length >= 3  
+                        ? '#aaa' 
+                        : 'red' 
+                }
+              ]} 
+              onChangeText = { handleChange ('username') }
+              onBlur = { handleBlur('username') }
+              value = { values.username } 
+            />
+            <TextInput 
+              placeholder = 'Email' 
+              autoCapitalize = 'none'
               autoCorrect = { false }
               keyboardType = 'email-address'
               textContentType = 'emailAddress'
@@ -57,9 +76,24 @@ export default function LoginForm({ navigation }) {
               onBlur = { handleBlur('password') }
               value = { values.password } 
             />
-            <View style = {{ alignItems: 'flex-end', marginBottom: 30, marginRight: 13}}>
-              <Text style = {{color: 'blue'}}>Forgot password?</Text>
-            </View>
+            <TextInput
+              placeholder = 'Confirm Password' 
+              autoCapitalize = 'none'
+              autoCorrect = { false }
+              secureTextEntry = { true }
+              textContentType = 'password'
+              style = {[
+                styles.input, 
+                { borderColor: 
+                    1 > values.passwordConfirmation.length || values.passwordConfirmation.length >= 6 && values.passwordConfirmation === values.password
+                      ? '#aaa' 
+                      : 'red' 
+                }
+              ]} 
+              onChangeText = { handleChange ('passwordConfirmation') }
+              onBlur = { handleBlur('passwordConfirmation') }
+              value = { values.passwordConfirmation } 
+            />
 
             <Pressable 
               style = { styles.button(isValid) } 
@@ -70,9 +104,9 @@ export default function LoginForm({ navigation }) {
             </Pressable>
 
             <View style = { styles.signupContainer }>
-              <Text>Don't have an account? </Text>
-              <TouchableOpacity style = {{ color: 'blue' }} onPress = {() => navigation.navigate('Signup')}>
-                <Text style = {{ color: 'blue' }}>Sign Up</Text>
+              <Text>Already have an account? </Text>
+              <TouchableOpacity style = {{ color: 'blue' }} onPress = {() => navigation.navigate('Login')}>
+                <Text style = {{ color: 'blue' }}>Log In</Text>
               </TouchableOpacity>
             </View>
           </>
@@ -97,8 +131,8 @@ const styles = StyleSheet.create({
   },
   button: (isValid) => ({
     borderWidth: 1,
-    borderColor: 'yellow',
-    backgroundColor: isValid ? 'yellow' : 'red',
+    borderColor: '#ff0',
+    backgroundColor: isValid ? '#ff0' : '#ff9',
     alignItems: 'center',
     justifyContent: 'center',
     height: 45,

@@ -1,15 +1,15 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import React from 'react'
 import LogoBY from "../assets/LogoBY.png"
-import LoginForm from '../components/LoginForm';
+import SignupForm from '../components/SignupForm';
 
-export default function Login({ navigation }) {
+export default function Signup({ navigation }) {
   return (
     <View style = { styles.container }>
       <View style = { styles.logoContainer}>
             <Image source = {LogoBY} style = {{ height: 150, width: 150 }}/>
       </View>
-      <LoginForm navigation = { navigation }/>
+      <SignupForm navigation = { navigation }/>
     </View>
   )
 }
