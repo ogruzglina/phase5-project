@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, TextInput, Button } from 'react-native'
+import { View, Text, Image, StyleSheet, TextInput, Button, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -77,9 +77,9 @@ export default function ChargerReviews({ route }) {
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <View >
+      <ScrollView showsVerticalScrollIndicator = { false }>
         { displayReviewInfo() }
-      </View>
+      </ScrollView>
       
       <View style = {styles.footer}>
         <View style={styles.inputContainer}>

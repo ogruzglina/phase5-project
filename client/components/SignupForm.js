@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   button: (isValid) => ({
     borderWidth: 1,
     borderColor: '#ff0',
-    backgroundColor: isValid ? '#ff0' : '#ff9',
+    backgroundColor: isValid ? '#ff0' : '#ffb',
     alignItems: 'center',
     justifyContent: 'center',
     height: 45,

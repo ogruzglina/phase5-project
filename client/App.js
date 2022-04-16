@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Navigation from './Navigation';
+import Navigation from './navigations/Navigation';
 import axios from 'axios'
 
 export default function App() {
