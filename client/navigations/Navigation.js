@@ -2,11 +2,11 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { NavigationContainer, getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ChargerDetails from './screens/ChargerDetails'
-import HomeBottomTabs from './components/HomeBottomTabs';
-import ChargerBottomTabs from './components/ChargerBottomTabs';
-import Login from './screens/Login';
-import Signup from './screens/Signup';
+import ChargerDetails from '../screens/ChargerDetails'
+import HomeBottomTabs from './HomeBottomTabs';
+import ChargerBottomTabs from './ChargerBottomTabs';
+import Login from '../screens/Login';
+import Signup from '../screens/Signup';
 
 export default function Navigation({ currentUser }) {
   const Stack = createNativeStackNavigator();
