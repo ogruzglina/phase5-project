@@ -14,7 +14,11 @@ export default function LoginForm({ navigation }) {
     <View style = { styles.wrapper} >
       <Formik
         initialValues = {{ email: '', password: ''}}
-        onSubmit = { values => {console.log('formik values ',values) }}
+        onSubmit = { values => {
+          console.log('formik values ',values);
+          // user jwt or db validation 
+          navigation.navigate('HomeBottomTabs');
+        }}
         validationSchema = { LoginFormSchema }
         validateOnMount = { true }
       >
@@ -57,6 +61,7 @@ export default function LoginForm({ navigation }) {
               onBlur = { handleBlur('password') }
               value = { values.password } 
             />
+            
             <View style = {{ alignItems: 'flex-end', marginBottom: 30, marginRight: 13}}>
               <Text style = {{color: 'blue'}}>Forgot password?</Text>
             </View>
