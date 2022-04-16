@@ -1,8 +1,9 @@
 import { View, Text, TextInput, StyleSheet, Pressable, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
-import { Formik, useFormik } from 'formik';
+import React from 'react'
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Validator from 'email-validator';
+import axios from 'axios'
 
 export default function SignupForm({ navigation }) {
   const SignupFormSchema = Yup.object().shape({
@@ -16,7 +17,31 @@ export default function SignupForm({ navigation }) {
     <View style = { styles.wrapper} >
       <Formik
         initialValues = {{ username: '', email: '', password: '', passwordConfirmation: '' }}
-        onSubmit = { values => {console.log('formik values ',values) }}
+        onSubmit = { (values, { resetForm }) => {
+            console.log('formik values ',values);
+            let newUser = {
+                username: values.username,
+                email: values.email,
+                password: values.password,
+                password_confirmation: values.passwordConfirmation
+            }
+            
+            axios.post(`http://localhost:3000/users`, newUser)
+                .then(res => {
+                    console.log('user post res', res.data);
+                    navigation.navigate('Login');
+                })
+                .catch(function(error){
+                    console.log('ERROR ', error);
+                    if (error.request) {
+                        console.log(error.request);
+                    }
+                    if (error.response) {
+                        console.log(error.response);
+                    }
+                }); 
+            resetForm();
+        }}
         validationSchema = { SignupFormSchema }
         validateOnMount = { true }
       >
