@@ -5,7 +5,7 @@ import axios from 'axios'
 export default function App() {
   const [ currentUser, setCurrentUser ] = useState(null);
 
-  const tempUserId = 13;
+  const tempUserId = 20;
     useEffect(async () => {
       try {
         const res = await axios.get(`http://localhost:3000/users/${tempUserId}`);

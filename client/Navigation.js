@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ChargerDetails from './screens/ChargerDetails'
 import HomeBottomTabs from './components/HomeBottomTabs';
 import ChargerBottomTabs from './components/ChargerBottomTabs';
+import Login from './screens/Login';
+import Signup from './screens/Signup';
 
 export default function Navigation({ currentUser }) {
   const Stack = createNativeStackNavigator();
@@ -29,7 +31,17 @@ export default function Navigation({ currentUser }) {
     console.log('nav currentUser - ', currentUser)
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName = "HomeBottomTabs" >
+      <Stack.Navigator initialRouteName = "Login" >
+        <Stack.Screen 
+          name = "Login" 
+          component = { Login }
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name = "Signup" 
+          component = { Signup }
+          options={{ headerShown: false }}
+        />
         <Stack.Screen 
           name = "HomeBottomTabs" 
           //component = { HomeBottomTabs }
