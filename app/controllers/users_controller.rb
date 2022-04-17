@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     def show
         user = find_user
-        render json: user, status: :ok
+        render json: user.chargers, status: :ok
     end
 
     def profile
@@ -59,6 +59,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.permit(:username, :password, :password_confirmation, :avatar, :email, :charger_id)
+        params.permit(:username, :password, :password_confirmation, :avatar, :email)
     end
 end
