@@ -7,6 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "🌱 Seeding data..."
 
+n_users = 30
+domains = ["gmail.com", "hotmail.com", "i.ua", "yahoo.com", "outlook.com"]
+
+n_users.times do
+    gender = ['men', 'women'].sample
+    name = gender == 'men' ? Faker::Name.male_first_name : Faker::Name.female_first_name
+    last_name = Faker::Name.last_name
+    username = name.first.downcase + last_name.downcase
+    email = username + "@" + domains.sample
+    password_digest = Faker::Internet.password(min_length: 6, max_length: 8, mix_case: true, special_characters: true)
+    avatar = ["https://randomuser.me/api/portraits/thumb/#{ gender }/#{ rand(1..70) }.jpg", "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0="].sample
+
+    User.create(username: username, password_digest: password_digest, avatar: avatar, email: email)
+end 
+
 n_chargers = 40
 types = ['Nema 1450', 'Nema 515', 'Nema 520', 'Nema 6-50', 'Tesla Wall Connector', 'Enel X JuiceBox 40', 'ClipperCreek EV Charging Station']
 
@@ -19,26 +34,11 @@ n_chargers.times do
     fee = rand(0..10)
     latitude = Faker::Address.latitude
     longitude = Faker::Address.longitude
-    Charger.create(charger_type: type, hours: hours, address: address, status: status, cost: cost, fee: fee, latitude: latitude, longitude: longitude)
+    user_id = rand(1..n_users)
+    Charger.create(charger_type: type, hours: hours, address: address, status: status, cost: cost, fee: fee, latitude: latitude, longitude: longitude, user_id: user_id)
 end
 
-n_users = 30
-domains = ["gmail.com", "hotmail.com", "i.ua", "yahoo.com", "outlook.com"]
-
-n_users.times do
-    gender = ['men', 'women'].sample
-    name = gender == 'men' ? Faker::Name.male_first_name : Faker::Name.female_first_name
-    last_name = Faker::Name.last_name
-    username = name.first.downcase + last_name.downcase
-    email = username + "@" + domains.sample
-    password_digest = Faker::Internet.password(min_length: 6, max_length: 8, mix_case: true, special_characters: true)
-    ch_id = [rand(0..n_chargers), nil].sample
-    avatar = ["https://randomuser.me/api/portraits/thumb/#{ gender }/#{ rand(1..70) }.jpg", "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0="].sample
-
-    User.create(username: username, password_digest: password_digest, avatar: avatar, email: email, charger_id: ch_id)
-end 
-
-n_reviews = 5
+n_reviews = 15
 reviews = [
     "Owner was rude!",
     "All good, you can come and charge",
