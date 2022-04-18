@@ -1,8 +1,9 @@
 import { View, Text, Image, StyleSheet, Button } from 'react-native'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-export default function Profile({ currentUser, navigation }) {
-  
+export default function Profile({ currentUser, currentUserChargers, navigation }) {
+  console.log('profile user , chargers', currentUserChargers.length)
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Image
@@ -11,13 +12,18 @@ export default function Profile({ currentUser, navigation }) {
       />
       <Text>{ currentUser.username }</Text>
       <Text>{ currentUser.email }</Text>
-      <Text>{ currentUser.charger_id ? "have a charger " : null }</Text>
+      
+      <View style = {{marginTop: 10}}>
+        { currentUserChargers.map( charger => 
+          <Text key = {charger.id}>{ charger.charger_type }</Text> 
+        )}
+      </View>
 
-      <Button 
+      {/* <Button 
         title="Add a Charger"
         color = 'green'
         onPress = { () => navigation.navigate('AddChargerForm')} 
-      />
+      /> */}
     </View>
   )
 }

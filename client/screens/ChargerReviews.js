@@ -13,6 +13,7 @@ export default function ChargerReviews({ route }) {
     try {
         const res = await axios.get(`http://localhost:3000/chargers/${chargerId}`);
         const reviews = await res.data;
+        console.log('reviews',reviews)
 
         const reviewsUsers = reviews.map( review => { 
           return {

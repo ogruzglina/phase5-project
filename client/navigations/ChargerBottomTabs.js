@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator();
 export default function ChargerBottomTabs({ route, navigation }) {
   const charger = route.params.params.charger;
   const currentUserId = route.params.currentUser.id;
-  console.log('chabtab route', route)
+  console.log('chabtab route', route.params)
   
   return (
       <Tab.Navigator initialRouteName = "ChargerDetails" screenOptions = {{headerShown: false}}>

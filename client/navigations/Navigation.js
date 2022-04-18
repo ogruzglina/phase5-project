@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { NavigationContainer, getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ChargerDetails from '../screens/ChargerDetails'
@@ -8,9 +8,9 @@ import ChargerBottomTabs from './ChargerBottomTabs';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 
-export default function Navigation({ currentUser }) {
+export default function Navigation({ currentUser, currentUserChargers, setCurrentUserChargers, setIsAddNewCharger }) {
   const Stack = createNativeStackNavigator();
-
+  
   function getHeaderTitle(route) {
     // If the focused route is not found, we need to assume it's the initial screen
     // This can happen during if there hasn't been any navigation inside the screen
@@ -28,10 +28,11 @@ export default function Navigation({ currentUser }) {
         return 'Direction';
     }
   }
-    console.log('nav currentUser - ', currentUser)
+  
+  //console.log('navigation currentUserChargers - ',currentUserChargers.length)
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName = "Login" >
+      <Stack.Navigator initialRouteName = "HomeBottomTabs" >
         <Stack.Screen 
           name = "Login" 
           component = { Login }
@@ -44,8 +45,10 @@ export default function Navigation({ currentUser }) {
         />
         <Stack.Screen 
           name = "HomeBottomTabs" 
-          //component = { HomeBottomTabs }
-          children = { () => <HomeBottomTabs currentUser = { currentUser } />}
+          component = { HomeBottomTabs }
+          initialParams={{ currentUser }}
+          // currentUserChargers, setCurrentUserChargers, setIsAddNewCharger
+          //children = { () => <HomeBottomTabs currentUser = { currentUser } allChargers = { chargers } />}
           options={{ headerShown: false }}
         />
         <Stack.Screen 

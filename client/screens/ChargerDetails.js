@@ -16,7 +16,6 @@ export default function ChargerDetails({ navigation, route }) {
     btnName = "Stop charging";
     color = "red";
   }
-  console.log('chargerRoute', route.params);
 
   useEffect(async () => {
     axios.put(`http://localhost:3000/chargers/${id}`, { status: isAvailable })
