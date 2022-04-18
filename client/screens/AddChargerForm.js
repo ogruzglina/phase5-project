@@ -1,5 +1,5 @@
-import { View, Text, TextInput, StyleSheet, Dimensions, Button } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import { View, TextInput, StyleSheet, Dimensions, Button } from 'react-native'
+import React, { useState } from 'react'
 import * as Location from 'expo-location';
 import axios from 'axios'
 
@@ -12,8 +12,6 @@ export default function AddChargerForm({ navigation, currentUserId, setCurrentUs
     const [ address, setAddress ] = useState("");
     const [ cost, setCost ] = useState(null);
     const [ fee, setFee] = useState(null);
-    //const [ newChargerId, setNewChargerId ] = useState(null);
-
     
     async function handleSubmit(e) {
         let coordinates = await Location.geocodeAsync(address);
@@ -30,13 +28,11 @@ export default function AddChargerForm({ navigation, currentUserId, setCurrentUs
                 longitude: coordinates[0].longitude,
                 user_id: currentUserId
             }
-            console.log('submit', newCharger);
-//setMyArray(oldArray => [...oldArray, newElement]);
+
             axios.post(`http://localhost:3000/chargers`, newCharger)
                 .then(res => {
                     setCurrentUserChargers(userChargers => [ ...userChargers, res.data ]);
                     setChargers(allChargers => [ ...allChargers, res.data ])
-                   // setIsAddNewCharger(oldValue => !oldValue);
                 })
                 .catch(function(error){
                     console.log('ERROR ', error);
@@ -56,76 +52,55 @@ export default function AddChargerForm({ navigation, currentUserId, setCurrentUs
         }
     }
 
-    //console.log('chargerId for put ---', newChargerId);
-
-    // useEffect(async () => {
-    //     axios.put(`http://localhost:3000/users/${currentUserId}`, { charger_id: newChargerId })
-    //         .then(updatedUser => { 
-    //             console.log('updated user data - ', updatedUser.data)
-    //             //onAddCharger(res.data) 
-    //         })
-    //         .catch(function(error){
-    //             console.log('ERROR', error)
-    //             if (error.request) {
-    //                 console.log('error request - ',error.request);
-    //                 //console.log(error.response.data.errors);
-    //             }
-    //             if (error.response) {
-    //                 console.log('error put - ',error.response);
-    //                 //console.log(error.response.data.errors);
-    //             }
-    //         });
-    // }, [newChargerId]);
-
-  return (
-    <View>
-        <View >
-            <View style = {{ marginLeft: '8%', marginTop: '40%'}}>
-                <TextInput 
-                    placeholder = 'Charger type' 
-                    autoFocus = { true }
-                    style = {styles.input} 
-                    onChangeText = { (e) => setChargerType(e) }
-                    name = 'chargerType'
-                    value = { chargerType } 
-                />
-                <TextInput 
-                    placeholder = 'Address' 
-                    style = {styles.input} 
-                    onChangeText = { (e) => setAddress(e) }
-                    value = { address } 
-                />
-                <TextInput 
-                    placeholder = 'Working hours (for ex.: 07.00 - 19.00)' 
-                    style = {styles.input} 
-                    onChangeText = { (e) => setHours(e) }
-                    value = { hours }
-                />
-                <TextInput 
-                    placeholder = 'Cost electricity per hr' 
-                    style = {styles.input} 
-                    onChangeText = { (e) => setCost(e) }
-                    keyboardType="numeric" 
-                    value = { cost }
-                />
-                <TextInput 
-                    placeholder = 'Fee' 
-                    style = {styles.input} 
-                    onChangeText = { (e) => setFee(e) }
-                    keyboardType="numeric"
-                    value = { fee }
-                />
-            </View>
-            <View style = {{ marginTop: '10%' }}>
-                <Button  
-                    title="Submit"
-                    color = 'green'
-                    onPress = { () => handleSubmit() } 
-                />
+    return (
+        <View>
+            <View >
+                <View style = {{ marginLeft: '8%', marginTop: '40%'}}>
+                    <TextInput 
+                        placeholder = 'Charger type' 
+                        autoFocus = { true }
+                        style = {styles.input} 
+                        onChangeText = { (e) => setChargerType(e) }
+                        name = 'chargerType'
+                        value = { chargerType } 
+                    />
+                    <TextInput 
+                        placeholder = 'Address' 
+                        style = {styles.input} 
+                        onChangeText = { (e) => setAddress(e) }
+                        value = { address } 
+                    />
+                    <TextInput 
+                        placeholder = 'Working hours (for ex.: 07.00 - 19.00)' 
+                        style = {styles.input} 
+                        onChangeText = { (e) => setHours(e) }
+                        value = { hours }
+                    />
+                    <TextInput 
+                        placeholder = 'Cost electricity per hr' 
+                        style = {styles.input} 
+                        onChangeText = { (e) => setCost(e) }
+                        keyboardType="numeric" 
+                        value = { cost }
+                    />
+                    <TextInput 
+                        placeholder = 'Fee' 
+                        style = {styles.input} 
+                        onChangeText = { (e) => setFee(e) }
+                        keyboardType="numeric"
+                        value = { fee }
+                    />
+                </View>
+                <View style = {{ marginTop: '10%' }}>
+                    <Button  
+                        title="Submit"
+                        color = 'green'
+                        onPress = { () => handleSubmit() } 
+                    />
+                </View>
             </View>
         </View>
-    </View>
-  )
+    )
 }
 
 const styles = StyleSheet.create({
