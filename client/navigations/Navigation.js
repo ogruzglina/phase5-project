@@ -1,4 +1,3 @@
-//import { View, Text } from 'react-native'
 import React from 'react'
 import { NavigationContainer, getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -7,7 +6,7 @@ import ChargerBottomTabs from './ChargerBottomTabs';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 
-export default function Navigation({ currentUser, currentUserChargers, setCurrentUserChargers, setIsAddNewCharger }) {
+export default function Navigation({ currentUser }) {
   const Stack = createNativeStackNavigator();
   
   function getHeaderTitle(route) {
@@ -30,7 +29,7 @@ export default function Navigation({ currentUser, currentUserChargers, setCurren
   
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName = "HomeBottomTabs" >
+      <Stack.Navigator initialRouteName = "Login" >
         <Stack.Screen 
           name = "Login" 
           component = { Login }
@@ -45,8 +44,8 @@ export default function Navigation({ currentUser, currentUserChargers, setCurren
           name = "HomeBottomTabs" 
           component = { HomeBottomTabs }
           initialParams={{ currentUser }}
-          // currentUserChargers, setCurrentUserChargers, setIsAddNewCharger
-          //children = { () => <HomeBottomTabs currentUser = { currentUser } allChargers = { chargers } />}
+          // // currentUserChargers, setCurrentUserChargers, setIsAddNewCharger
+          //children = { () => <HomeBottomTabs currentUser = { currentUser } />}
           options={{ headerShown: false }}
         />
         <Stack.Screen 

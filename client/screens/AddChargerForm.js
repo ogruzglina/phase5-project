@@ -6,7 +6,7 @@ import axios from 'axios'
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
-export default function AddChargerForm({ navigation, currentUserId, setCurrentUserChargers, setIsAddNewCharger, setChargers }) {    
+export default function AddChargerForm({ navigation, currentUserId, setCurrentUserChargers, setChargers }) {    
     const [ chargerType, setChargerType ] = useState("");
     const [ hours, setHours ] = useState("");
     const [ address, setAddress ] = useState("");
