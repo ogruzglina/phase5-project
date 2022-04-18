@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const Tab = createBottomTabNavigator();
 
-export default function HomeBottomTabs({ route }) {//, currentUser }) {
+export default function HomeBottomTabs({ route, navigation }) {
   const [ currentUserChargers, setCurrentUserChargers ] = useState(null);
   const [ chargers, setChargers ] = useState(null);
   const currentUser = route.params.currentUser;
@@ -17,8 +17,6 @@ export default function HomeBottomTabs({ route }) {//, currentUser }) {
     try {
       const res = await axios.get(`http://localhost:3000/uchargers/${currentUser.id}`);
       const userChargers = await res.data;
-
-      console.log('homebt user chargers - ', userChargers.length)
 
       setCurrentUserChargers(userChargers);
     } catch (e) {
@@ -30,7 +28,7 @@ export default function HomeBottomTabs({ route }) {//, currentUser }) {
     try {
       const res = await axios.get('http://localhost:3000/chargers');
       const chargersList = await res.data;
-      //console.log('homebt useeffect chargers - ', chargersList)
+
       setChargers(chargersList);
     } catch (e) {
         console.log(e);
@@ -43,8 +41,7 @@ export default function HomeBottomTabs({ route }) {//, currentUser }) {
     <Tab.Navigator initialRouteName = "Home">
       <Tab.Screen 
         name = "Home" 
-        component = { Home }
-        initialParams = {{ chargers: chargers }}
+        children = { () => <Home navigation={navigation} chargers = { chargers } />}
       />
       <Tab.Screen 
         name = "Profile" 

@@ -8,9 +8,6 @@ export default function Map({ chargers, navigation }) {
   const [location, setLocation] = useState({ longitude: 0, latitude: 0 });
   const [errorMsg, setErrorMsg] = useState(null);
 
-  console.log('chargers - map', chargers.length)
-  console.log('chargers - map', navigation)
-
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -59,16 +56,6 @@ export default function Map({ chargers, navigation }) {
               </Callout>
             </Marker>
         )}
-
-        {/* <Marker 
-          coordinate = {{ latitude: 40.7053, longitude: -74.0139 }}
-          pinColor = 'red'
-        >
-          <Callout onPress = { () => navigation.navigate('ChargerDetails') }>
-            <Text>{ location.latitude }</Text>
-            <Text>{ location.longitude }</Text>
-          </Callout>
-        </Marker> */}
       </MapView> 
     </View>
   );
