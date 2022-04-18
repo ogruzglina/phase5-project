@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "🌱 Seeding data..."
 
-n_users = 30
+n_users = 20
 domains = ["gmail.com", "hotmail.com", "i.ua", "yahoo.com", "outlook.com"]
 
 n_users.times do
@@ -22,7 +22,7 @@ n_users.times do
     User.create(username: username, password_digest: password_digest, avatar: avatar, email: email)
 end 
 
-n_chargers = 40
+n_chargers = 10
 types = ['Nema 1450', 'Nema 515', 'Nema 520', 'Nema 6-50', 'Tesla Wall Connector', 'Enel X JuiceBox 40', 'ClipperCreek EV Charging Station']
 
 n_chargers.times do 
@@ -38,7 +38,7 @@ n_chargers.times do
     Charger.create(charger_type: type, hours: hours, address: address, status: status, cost: cost, fee: fee, latitude: latitude, longitude: longitude, user_id: user_id)
 end
 
-n_reviews = 15
+n_reviews = 10
 reviews = [
     "Owner was rude!",
     "All good, you can come and charge",

@@ -4,10 +4,12 @@ import React, { useEffect, useState } from 'react';
 import * as Location from 'expo-location';
 
 export default function Map({ chargers, navigation }) {
-  const [location, setLocation] = useState({longitude: 0, latitude: 0});
+
+  const [location, setLocation] = useState({ longitude: 0, latitude: 0 });
   const [errorMsg, setErrorMsg] = useState(null);
 
   console.log('chargers - map', chargers.length)
+  console.log('chargers - map', navigation)
 
   useEffect(() => {
     (async () => {
@@ -58,7 +60,7 @@ export default function Map({ chargers, navigation }) {
             </Marker>
         )}
 
-        <Marker 
+        {/* <Marker 
           coordinate = {{ latitude: 40.7053, longitude: -74.0139 }}
           pinColor = 'red'
         >
@@ -66,7 +68,7 @@ export default function Map({ chargers, navigation }) {
             <Text>{ location.latitude }</Text>
             <Text>{ location.longitude }</Text>
           </Callout>
-        </Marker>
+        </Marker> */}
       </MapView> 
     </View>
   );
