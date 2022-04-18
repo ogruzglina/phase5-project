@@ -9,6 +9,11 @@ class ChargersController < ApplicationController
         render json: charger.reviews, status: :ok
     end
 
+    def show_user_chargers
+        userChargers = Charger.where("user_id = #{params[:user_id]}")
+        render json: userChargers
+    end
+
     def create
         charger = Charger.create!(charger_params)
         render json: charger, status: :created

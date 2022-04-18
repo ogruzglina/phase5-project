@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :prices, only: [:show]
   resources :reviews, only: [:create, :index]
   resources :chargers
+  get "/uchargers/:user_id", to: "chargers#show_user_chargers"
   resources :users
   # post "/signup", to: "users#create"
   # get "/auth", to: "users#show"

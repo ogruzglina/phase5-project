@@ -6,13 +6,13 @@ import axios from 'axios'
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
-export default function AddChargerForm({ navigation, currentUserId }) {    
+export default function AddChargerForm({ navigation, currentUserId, setCurrentUserChargers, setIsAddNewCharger, setChargers }) {    
     const [ chargerType, setChargerType ] = useState("");
     const [ hours, setHours ] = useState("");
     const [ address, setAddress ] = useState("");
     const [ cost, setCost ] = useState(null);
     const [ fee, setFee] = useState(null);
-    const [ newChargerId, setNewChargerId ] = useState(null);
+    //const [ newChargerId, setNewChargerId ] = useState(null);
 
     
     async function handleSubmit(e) {
@@ -27,12 +27,17 @@ export default function AddChargerForm({ navigation, currentUserId }) {
                 cost: cost,
                 status: true,
                 latitude: coordinates[0].latitude,
-                longitude: coordinates[0].longitude
+                longitude: coordinates[0].longitude,
+                user_id: currentUserId
             }
             console.log('submit', newCharger);
-
+//setMyArray(oldArray => [...oldArray, newElement]);
             axios.post(`http://localhost:3000/chargers`, newCharger)
-                .then(res => setNewChargerId(res.data.id))
+                .then(res => {
+                    setCurrentUserChargers(userChargers => [ ...userChargers, res.data ]);
+                    setChargers(allChargers => [ ...allChargers, res.data ])
+                   // setIsAddNewCharger(oldValue => !oldValue);
+                })
                 .catch(function(error){
                     console.log('ERROR ', error);
                     if (error.request) {
@@ -51,26 +56,26 @@ export default function AddChargerForm({ navigation, currentUserId }) {
         }
     }
 
-    console.log('chargerId for put ---', newChargerId);
+    //console.log('chargerId for put ---', newChargerId);
 
-    useEffect(async () => {
-        axios.put(`http://localhost:3000/users/${currentUserId}`, { charger_id: newChargerId })
-            .then(updatedUser => { 
-                console.log('updated user data - ', updatedUser.data)
-                //onAddCharger(res.data) 
-            })
-            .catch(function(error){
-                console.log('ERROR', error)
-                if (error.request) {
-                    console.log('error request - ',error.request);
-                    //console.log(error.response.data.errors);
-                }
-                if (error.response) {
-                    console.log('error put - ',error.response);
-                    //console.log(error.response.data.errors);
-                }
-            });
-    }, [newChargerId]);
+    // useEffect(async () => {
+    //     axios.put(`http://localhost:3000/users/${currentUserId}`, { charger_id: newChargerId })
+    //         .then(updatedUser => { 
+    //             console.log('updated user data - ', updatedUser.data)
+    //             //onAddCharger(res.data) 
+    //         })
+    //         .catch(function(error){
+    //             console.log('ERROR', error)
+    //             if (error.request) {
+    //                 console.log('error request - ',error.request);
+    //                 //console.log(error.response.data.errors);
+    //             }
+    //             if (error.response) {
+    //                 console.log('error put - ',error.response);
+    //                 //console.log(error.response.data.errors);
+    //             }
+    //         });
+    // }, [newChargerId]);
 
   return (
     <View>
