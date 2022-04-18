@@ -1,8 +1,7 @@
-import { View, Text } from 'react-native'
-import React, {useState, useEffect} from 'react'
+//import { View, Text } from 'react-native'
+import React from 'react'
 import { NavigationContainer, getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ChargerDetails from '../screens/ChargerDetails'
 import HomeBottomTabs from './HomeBottomTabs';
 import ChargerBottomTabs from './ChargerBottomTabs';
 import Login from '../screens/Login';
@@ -29,7 +28,6 @@ export default function Navigation({ currentUser, currentUserChargers, setCurren
     }
   }
   
-  //console.log('navigation currentUserChargers - ',currentUserChargers.length)
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName = "HomeBottomTabs" >
