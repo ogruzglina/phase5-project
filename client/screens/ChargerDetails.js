@@ -1,6 +1,6 @@
-import { View, Text, Button } from 'react-native'
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import { View, Text, Button, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function ChargerDetails({ navigation, route }) {
   const { charger_type, address, cost, fee, hours, status, id } = route.params.charger;
@@ -35,13 +35,13 @@ export default function ChargerDetails({ navigation, route }) {
   }, [isAvailable]);
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>{ charger_type }</Text>
-      <Text>{ address }</Text>
-      <Text>Cherger is available - { hours }</Text>
-      <Text>Cost per hour - $ {cost}</Text>
-      <Text>Fee - $ { fee }</Text>
-      <Text>Charger station is { chargerStatus }</Text>
+    <View style={ styles.container}>
+      <Text style={ styles.input}>{ charger_type }</Text>
+      <Text style={ styles.input}>{ address }</Text>
+      <Text style={ styles.input}>Cherger is available - { hours }</Text>
+      <Text style={ styles.input}>Cost per hour - $ {cost}</Text>
+      <Text style={ styles.input}>Fee - $ { fee }</Text>
+      <Text style={ styles.input}>Charger station is { chargerStatus }</Text>
 
       <View style = {{ marginTop: '10%' }}>
         <Button  
@@ -53,3 +53,39 @@ export default function ChargerDetails({ navigation, route }) {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    marginTop: 80,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#aaa',
+    backgroundColor: '#1F1B2F',
+    borderRadius: 24,
+    margin: 10,
+    padding: 10,
+    textAlign: 'center',
+    fontSize: 18,
+    color: 'white',
+  },
+  button: (isValid) => ({
+    borderWidth: 1,
+    borderColor: '#ff0',
+    backgroundColor: isValid ? '#ff0' : '#ffb',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 45,
+    borderRadius: 30,
+    margin: 10,
+  }),
+  container: {
+    flex: 1,
+    //flexDirection: 'column',
+    width: '100%',
+    marginTop: 50,
+    justifyContent: 'center'
+
+    //flex: 1, alignItems: 'center', justifyContent: 'center'
+  }
+});

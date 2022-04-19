@@ -36,11 +36,11 @@ export default function ChargerBottomTabs({ route, navigation }) {
                 iconName = 'running';
                 break;
           }
-          color = focused ? 'blue' : 'grey';
+          color = focused ? 'gold' : '#ffb';
           return <FontAwesome5 name = { iconName } size = { size } color = { color } />;
         },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: 'gold',
+        tabBarInactiveTintColor: '#ffb',
       })}
       >
         <Tab.Screen name = "ChargerDetails" component = { ChargerDetails } options = {{ headerShown: false }}/>
@@ -56,6 +56,7 @@ export default function ChargerBottomTabs({ route, navigation }) {
         component = { Login }
         options={{
           tabBarStyle: { display: "none" },
+          headerShown: false
        }}
       />
       </Tab.Navigator>
