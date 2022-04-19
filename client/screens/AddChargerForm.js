@@ -1,4 +1,4 @@
-import { View, TextInput, StyleSheet, Dimensions, Button } from 'react-native'
+import { View, TextInput, StyleSheet, Dimensions, Button, Pressable, Text } from 'react-native'
 import React, { useState } from 'react'
 import * as Location from 'expo-location';
 import axios from 'axios'
@@ -58,6 +58,7 @@ export default function AddChargerForm({ navigation, currentUserId, setCurrentUs
                 <View style = {{ marginLeft: '8%', marginTop: '40%'}}>
                     <TextInput 
                         placeholder = 'Charger type' 
+                        placeholderTextColor="#999" 
                         autoFocus = { true }
                         style = {styles.input} 
                         onChangeText = { (e) => setChargerType(e) }
@@ -66,18 +67,21 @@ export default function AddChargerForm({ navigation, currentUserId, setCurrentUs
                     />
                     <TextInput 
                         placeholder = 'Address' 
+                        placeholderTextColor="#999"
                         style = {styles.input} 
                         onChangeText = { (e) => setAddress(e) }
                         value = { address } 
                     />
                     <TextInput 
-                        placeholder = 'Working hours (for ex.: 07.00 - 19.00)' 
+                        placeholder = 'Working hours (for ex.: 07.00 - 19.00)'
+                        placeholderTextColor="#999" 
                         style = {styles.input} 
                         onChangeText = { (e) => setHours(e) }
                         value = { hours }
                     />
                     <TextInput 
                         placeholder = 'Cost electricity per hr' 
+                        placeholderTextColor="#999"
                         style = {styles.input} 
                         onChangeText = { (e) => setCost(e) }
                         keyboardType="numeric" 
@@ -85,18 +89,29 @@ export default function AddChargerForm({ navigation, currentUserId, setCurrentUs
                     />
                     <TextInput 
                         placeholder = 'Fee' 
+                        placeholderTextColor="#999"
                         style = {styles.input} 
                         onChangeText = { (e) => setFee(e) }
                         keyboardType="numeric"
                         value = { fee }
                     />
-                </View>
+                
                 <View style = {{ marginTop: '10%' }}>
-                    <Button  
+                    {/* <Button  
+                        style = {styles.button}
                         title="Submit"
                         color = 'green'
                         onPress = { () => handleSubmit() } 
-                    />
+                    /> */}
+
+
+                    <Pressable 
+                        style = { styles.button } 
+                        onPress = { () => handleSubmit() } 
+                    >
+                        <Text style = {{ fontSize: 18 }}>Submit</Text>
+                    </Pressable>
+                    </View>
                 </View>
             </View>
         </View>
@@ -113,13 +128,26 @@ const styles = StyleSheet.create({
       height: height/2,
     },
     input: {
-        borderWidth: 1.5,
-        borderColor: '#aaa',
+        borderWidth: 1,
+        borderColor: '#70F1E3',
         borderRadius: 30,
         width: width/1.2,
         marginVertical: 10,
         padding: 10,
         textAlign: 'center',
         fontSize: 18,
-    }
+        color: 'white'
+    },
+    button: {
+          borderWidth: 1,
+          borderColor: '#ff0',
+          backgroundColor: '#686',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: 45,
+          borderRadius: 30,
+          margin: 10,
+          width: width/1.2,
+          marginLeft: 0
+        },
   });

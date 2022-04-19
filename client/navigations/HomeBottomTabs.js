@@ -60,11 +60,11 @@ export default function HomeBottomTabs({ route, navigation }) {
                 iconName = 'running';
                 break;
           }
-          color = focused ? 'blue' : 'grey';
+          color = focused ? '#FCCF03' : '#ffb';
           return <FontAwesome5 name = { iconName } size = { size } color = { color } />;
         },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: '#FCCF03',
+        tabBarInactiveTintColor: '#ffb',
       })}
     >
       <Tab.Screen 

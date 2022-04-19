@@ -6,6 +6,17 @@ import ChargerBottomTabs from './ChargerBottomTabs';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 
+const MyTheme = {
+  dark: true,
+  colors: {
+    primary: '#ffb',
+    background: '#37314B',
+    card: '#1F1B2F',
+    text: 'gold',
+    border: '#37314B',
+  },
+};
+
 export default function Navigation({ currentUser }) {
   const Stack = createNativeStackNavigator();
   
@@ -28,7 +39,7 @@ export default function Navigation({ currentUser }) {
   }
   
   return (
-    <NavigationContainer>
+    <NavigationContainer theme = { MyTheme }>
       <Stack.Navigator initialRouteName = "Login" >
         <Stack.Screen 
           name = "Login" 
