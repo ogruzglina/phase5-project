@@ -30,7 +30,7 @@ export default function HomeBottomTabs({ route, navigation }) {
     try {
       const res = await axios.get('http://localhost:3000/chargers');
       const chargersList = await res.data;
-
+      
       setChargers(chargersList);
     } catch (e) {
         console.log(e);
