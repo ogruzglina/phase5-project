@@ -6,7 +6,7 @@ class ChargersController < ApplicationController
 
     def show
         charger = find_charger
-        render json: charger.reviews, status: :ok
+        render json: charger.reviews.order('created_at desc'), status: :ok
     end
 
     def show_user_chargers
@@ -37,6 +37,6 @@ class ChargersController < ApplicationController
     end
 
     def charger_params
-        params.permit(:charger_type, :hours, :address, :status, :cost, :fee, :latitude, :longitude, :user_id)
+        params.permit(:charger_type, :hours, :address, :status, :cost, :fee, :latitude, :longitude, :user_id, :created_at)
     end
 end

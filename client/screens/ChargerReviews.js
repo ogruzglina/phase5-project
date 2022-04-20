@@ -86,7 +86,7 @@ export default function ChargerReviews({ route }) {
     try {
         const res = await axios.get(`http://localhost:3000/chargers/${chargerId}`);
         const reviews = await res.data;
-        console.log('reviews',reviews)
+        console.log('reviews - ',reviews)
 
         const reviewsUsers = reviews.map( review => { 
           return {
@@ -115,7 +115,7 @@ export default function ChargerReviews({ route }) {
               <Image style={[styles.tinyAvatar, {marginRight: 20}]} source={{ url: r.userAvatar }} />
               <Text style = {{ alignSelf: 'flex-end', color: '#20BE94', fontSize: 18, fontFamily: 'Inter_700Bold'}}>{r.userUsername}</Text>
             </View>
-            <Text style = {{ color: 'white', fontSize: 18, fontFamily: 'Merienda_400Regular'}}>{r.review}</Text>
+            <Text style = {{ color: '#edb', fontSize: 18, fontFamily: 'Merienda_400Regular'}}>{r.review}</Text>
           </View>
       )});
 //style={{ fontFamily: 'Inter_500Medium'}}
@@ -132,7 +132,6 @@ export default function ChargerReviews({ route }) {
 
     axios.post(`http://localhost:3000/reviews`, newReviewObj)
       .then(res => { 
-        console.log('post res',res);
         const addedReview = {
           review: res.data.review,
           reviewId: res.data.id,
