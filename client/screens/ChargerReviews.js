@@ -86,7 +86,6 @@ export default function ChargerReviews({ route }) {
     try {
         const res = await axios.get(`http://localhost:3000/chargers/${chargerId}`);
         const reviews = await res.data;
-        console.log('reviews - ',reviews)
 
         const reviewsUsers = reviews.map( review => { 
           return {
@@ -108,7 +107,6 @@ export default function ChargerReviews({ route }) {
   function displayReviewInfo() {
     if (currentChargerReviews !== null) {
       const showingReviewsInfo = currentChargerReviews.map( r => {
-        console.log('r', r)
         return (
           <View key = {r.reviewId} style = {{ marginBottom: 18 }}>
             <View style = {{ marginBottom: 5, flexDirection: 'row', }}>

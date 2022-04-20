@@ -193,7 +193,6 @@ import { FontAwesome5 } from '@expo/vector-icons';
 ]
 
 export default function Map({ chargers, navigation }) {
-  console.log('chargers map - ', chargers)
   const [location, setLocation] = useState({ longitude: 0, latitude: 0 });
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -238,12 +237,15 @@ export default function Map({ chargers, navigation }) {
               pinColor = { charger.status ? "green" : "red" }
             >
               <FontAwesome5 name='plug' size={40} color='#20BE94' /> 
-              <Callout onPress = { () => navigation.navigate('ChargerDetails', {
-                  screen: 'ChargerDetails', params: { charger: charger }}
+              <Callout onPress = { () => navigation.navigate(
+                  'ChargerDetails', 
+                  {screen: 'ChargerDetails', params: { charger: charger }}
               )}>
-                <Text>{ charger.charger_type }</Text>
-                <Text>{ charger.address }</Text>
-                <Text>{ charger.status ? "Status: available" : "Status: unavailible" }</Text>
+                <View style = {{ width: 200, backgroundColor: '#999', borderRadius: 5}}>
+                  <Text style = {{ textAlign: 'center' }}>{ charger.charger_type }</Text>
+                  <Text style = {{ textAlign: 'center' }}>{ charger.address }</Text>
+                  <Text style = {{ textAlign: 'center' }}>{ charger.status ? "Status: available" : "Status: unavailible" }</Text>
+                </View>
               </Callout>
             </Marker>
         )}
