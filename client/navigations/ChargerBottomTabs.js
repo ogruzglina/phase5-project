@@ -1,6 +1,5 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-//import Ionicons from '@expo/vector-icons/Ionicons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import ChargerDetails from '../screens/ChargerDetails';
 import Direction from '../screens/Direction';
@@ -17,7 +16,6 @@ export default function ChargerBottomTabs({ route, navigation }) {
   return (
       <Tab.Navigator 
         initialRouteName = "ChargerDetails" 
-        //screenOptions = {{headerShown: false}}
         screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
@@ -41,23 +39,20 @@ export default function ChargerBottomTabs({ route, navigation }) {
         },
         tabBarActiveTintColor: 'gold',
         tabBarInactiveTintColor: '#ffb',
+        headerShown: false
       })}
       >
-        <Tab.Screen name = "ChargerDetails" component = { ChargerDetails } options = {{ headerShown: false }}/>
-        <Tab.Screen name = "Direction" component = { Direction } options = {{ headerShown: false }}/>
+        <Tab.Screen name = "ChargerDetails" component = { ChargerDetails } />
+        <Tab.Screen name = "Direction" component = { Direction } />
         <Tab.Screen 
           name = "ChargerReviews" 
           component = { ChargerReviews } 
           initialParams={{ charger: charger, currentUserId: currentUserId }} 
-          options = {{ headerShown: false }}
         />
         <Tab.Screen 
         name = "Logout" 
         component = { Login }
-        options={{
-          tabBarStyle: { display: "none" },
-          headerShown: false
-       }}
+        options={{ tabBarStyle: { display: "none" } }}
       />
       </Tab.Navigator>
   )

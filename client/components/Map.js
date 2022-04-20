@@ -234,9 +234,8 @@ export default function Map({ chargers, navigation }) {
               key={ index } 
               title={ charger.name } 
               coordinate={{ latitude: charger.latitude, longitude: charger.longitude }} 
-              pinColor = { charger.status ? "green" : "red" }
             >
-              <FontAwesome5 name='plug' size={40} color='#20BE94' /> 
+              <FontAwesome5 name = 'plug' size = { 40 } color= { charger.status ? "#20BE94" : "red" } /> 
               <Callout onPress = { () => navigation.navigate(
                   'ChargerDetails', 
                   {screen: 'ChargerDetails', params: { charger: charger }}
