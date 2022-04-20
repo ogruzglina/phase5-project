@@ -2,19 +2,8 @@ import { View, Text, Image, StyleSheet, TextInput, Button, ScrollView } from 're
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-// import AppLoading from 'expo-app-loading';
-// import { useFonts, BalsamiqSans_400Regular } from '@expo-google-fonts/balsamiq-sans';
-// import {
-//   SourceSansPro_400Regular_Italic,
-//   SourceSansPro_700Bold,
-// } from '@expo-google-fonts/source-sans-pro';
-
 import {
   useFonts,
-  Inter_100Thin,
-  Inter_200ExtraLight,
-  Inter_300Light,
   Inter_400Regular,
   Inter_500Medium,
   Inter_600SemiBold,
@@ -27,46 +16,13 @@ import {
   Merienda_700Bold
 } from "@expo-google-fonts/merienda";
 
-
-
-
-
 export default function ChargerReviews({ route }) {
   const chargerId = route.params.charger.id;
   const currentUserId = route.params.currentUserId;
   const [ currentChargerReviews, setCurrentChargerReviews ] = useState(null);
   const [ newReview, setNewReview ] = useState(null);
 
-
-  
-  // let [fontsLoaded] = useFonts({
-  //   BalsamiqSans_400Regular,
-  //   SourceSansPro_400Regular_Italic,
-  //   SourceSansPro_700Bold,
-  // });
-
-  // if (!fontsLoaded) {
-  //   return <AppLoading />;
-  // } else {
-  //   return (
-  //     <View style={styles.container}>
-  //       <Text style={[styles.text, { fontFamily: 'SourceSansPro_400Regular_Italic' }]}>
-  //         Source Sans Pro Italic
-  //       </Text>
-  //       <Text style={[styles.text, { fontFamily: 'SourceSansPro_700Bold' }]}>
-  //         Source Sans Pro Bold
-  //       </Text>
-  //       <Text style={[styles.text, { fontFamily: 'BalsamiqSans_400Regular' }]}>
-  //         Balsamiq Sans Regular
-  //       </Text>
-  //       <Text style={[styles.text]}>Platform Default</Text>
-  //     </View>
-  //   );
-  // }
   let [fontsLoaded] = useFonts({
-    Inter_100Thin,
-    Inter_200ExtraLight,
-    Inter_300Light,
     Inter_400Regular,
     Inter_500Medium,
     Inter_600SemiBold,
@@ -75,12 +31,7 @@ export default function ChargerReviews({ route }) {
     Inter_900Black,
     Merienda_400Regular,
     Merienda_700Bold,
-
   });
-
-  
-  
-
 
   useEffect(async () => {
     try {
@@ -116,7 +67,7 @@ export default function ChargerReviews({ route }) {
             <Text style = {{ color: '#edb', fontSize: 18, fontFamily: 'Merienda_400Regular'}}>{r.review}</Text>
           </View>
       )});
-//style={{ fontFamily: 'Inter_500Medium'}}
+
       return showingReviewsInfo;
     }
   }
@@ -209,6 +160,5 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     paddingHorizontal: 20,
     paddingTop: 15,
-    //marginBottom: 10,
   }
 });
