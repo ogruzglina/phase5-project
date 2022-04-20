@@ -38,13 +38,14 @@ n_chargers.times do
     Charger.create(charger_type: type, hours: hours, address: address, status: status, cost: cost, fee: fee, latitude: latitude, longitude: longitude, user_id: user_id)
 end
 
-n_reviews = 10
+n_reviews = 20
 reviews = [
     "Owner was rude!",
     "All good, you can come and charge",
     "Works fine",
     "They save my life :)",
-    "Too slow"
+    "Too slow",
+    "Deffinately will charge again there!"
 ]
 
 n_reviews.times do

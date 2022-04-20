@@ -8,7 +8,11 @@ class UsersController < ApplicationController
 
     def show
         user = find_user
-        render json: user.chargers, status: :ok
+        if (user.chargers.length == 0)
+            render json: user, status: :ok
+        else
+            render json: user.chargers, status: :ok
+        end
     end
 
     def profile

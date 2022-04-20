@@ -225,8 +225,8 @@ export default function Map({ chargers, navigation }) {
         initialRegion = {{
           latitude: location.latitude, 
           longitude: location.longitude,
-          latitudeDelta: 1.2,
-          longitudeDelta: 1
+          latitudeDelta: 65.2,
+          longitudeDelta: 65
         }}
       >{/*charging-station or bolt*/}
         { chargers.map((charger, index) => 

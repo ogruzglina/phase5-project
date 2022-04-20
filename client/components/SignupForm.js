@@ -125,7 +125,7 @@ export default function SignupForm({ navigation }) {
               onPress = { handleSubmit }
               disabled = { !isValid } 
             >
-              <Text style = {{ fontSize: 18 }}>Log In</Text>
+              <Text style = {{ fontSize: 18 }}>Sign Up</Text>
             </Pressable>
 
             <View style = { styles.signupContainer }>
