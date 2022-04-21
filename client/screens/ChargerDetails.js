@@ -1,4 +1,4 @@
-import { View, TextInput, Button, StyleSheet, Dimensions } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Dimensions, Image } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -75,10 +75,10 @@ const styles = StyleSheet.create({
     shadowColor: "#21C5BF",
     shadowOffset: {
       width: 0,
-      height: 5,
+      height: 4,
     },
-    shadowOpacity: 0.83,
-    shadowRadius: 6,
+    shadowOpacity: 0.63,
+    shadowRadius: 5,
   },
   button: (isValid) => ({
     borderWidth: 1,

@@ -60,9 +60,9 @@ const styles = StyleSheet.create({
       shadowColor: "#21C5BF",
       shadowOffset: {
         width: 0,
-        height: 5,
-      },
-      shadowOpacity: 0.83,
-      shadowRadius: 6,
+        height: 4,
+    },
+    shadowOpacity: 0.63,
+    shadowRadius: 5,
     },
 });

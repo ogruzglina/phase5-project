@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         borderWidth: 1.5,
         backgroundColor: '#1F1B2F',
         borderColor: '#20BE94',
-        color: '#F9FCE0',
+        color: '#FEF5ED',
         borderRadius: 30,
         width: width/1.2,
         marginVertical: 6,
@@ -127,10 +127,10 @@ const styles = StyleSheet.create({
         shadowColor: "#21C5BF",
         shadowOffset: {
             width: 0,
-            height: 5,
+            height: 4,
         },
-        shadowOpacity: 0.83,
-        shadowRadius: 6,
+        shadowOpacity: 0.63,
+        shadowRadius: 5,
     },
     button: {
         borderWidth: 1,
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         margin: 10,
         width: width/1.2,
         marginLeft: 0,
-        shadowColor: "#1F1B2F",
+        shadowColor: "black",
         shadowOffset: {
             width: 0,
             height: 5,

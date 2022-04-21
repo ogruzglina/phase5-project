@@ -59,7 +59,7 @@ export default function ChargerReviews({ route }) {
     if (currentChargerReviews !== null) {
       const showingReviewsInfo = currentChargerReviews.map( r => {
         return (
-          <View key = {r.reviewId} style = {{ marginBottom: 18 }}>
+          <View key = {r.reviewId} style = { styles.reviewConteiner }>
             <View style = {{ marginBottom: 5, flexDirection: 'row', }}>
               <Image style={[ styles.tinyAvatar, { marginRight: 20, borderRadius: 20 } ]} source={{ url: r.userAvatar }} />
               <Text style = {{ alignSelf: 'flex-end', color: '#20BE94', fontSize: 18, fontFamily: 'Inter_700Bold'}}>{r.userUsername}</Text>
@@ -103,8 +103,8 @@ export default function ChargerReviews({ route }) {
   if (!fontsLoaded) return null;
 
   return (
-    <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <ScrollView showsVerticalScrollIndicator = { false } style = {{ marginBottom: 50, width: '85%' }}>
+    <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <ScrollView showsVerticalScrollIndicator = { false } style = {{ marginBottom: 50, width: '90%', padding: 8 }}>
         { displayReviewInfo() }
       </ScrollView>
       
@@ -149,6 +149,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 20,
+  },
+  reviewConteiner: {
+    padding: 10,
+    marginBottom: 18,
+    borderRadius: 30,
+    backgroundColor: "#1F1B2F",
+    shadowColor: "gold",
+    shadowOffset: {
+        width: 0,
+        height: 4,
+    },
+    shadowOpacity: 0.63,
+    shadowRadius: 5,
+
   },
   inputContainer: {
     backgroundColor: 'white',
