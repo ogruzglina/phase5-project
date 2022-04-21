@@ -6,7 +6,7 @@ import Logo from '../components/Logo';
 export default function Signup({ navigation }) {
   return (
     <View style = { styles.container }>
-      <Logo />
+      <Logo isLogin = { false }/>
       <SignupForm navigation = { navigation }/>
     </View>
   )
@@ -15,7 +15,7 @@ export default function Signup({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
-    backgroundColor: 'white',
+    backgroundColor: '#1F1B2F', //#37314B
     paddingTop: 50,
     paddingHorizontal: 12,
   },

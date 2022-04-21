@@ -216,7 +216,7 @@ export default function Map({ chargers, navigation }) {
   return (
     <View>
       <MapView 
-        customMapStyle = { mapStyle }
+        //customMapStyle = { mapStyle }
         style = {{ height: Dimensions.get('window').height }}
         provider = { PROVIDER_GOOGLE }
         showsUserLocation = { true }
@@ -235,7 +235,7 @@ export default function Map({ chargers, navigation }) {
               title={ charger.name } 
               coordinate={{ latitude: charger.latitude, longitude: charger.longitude }} 
             >
-              <FontAwesome5 name = 'plug' size = { 40 } color= { charger.status ? "#20BE94" : "red" } /> 
+              <FontAwesome5 name = 'plug' size = { 35 } color= { charger.status ? "#20BE94" : "red" } /> 
               <Callout onPress = { () => navigation.navigate(
                   'ChargerDetails', 
                   {screen: 'ChargerDetails', params: { charger: charger }}
