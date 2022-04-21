@@ -1,13 +1,14 @@
 import { Dimensions, Image, StyleSheet, View } from 'react-native'
 import React from 'react'
-import LogoBY from "../assets/images/LogoBY.png"
+import LogoEV from "../assets/images/LogoEV.png"
+import LogoEVyellow from "../assets/images/LogoEVyellow.png"
 
-export default function Logo() {
+export default function Logo({ isLogin }) {
     const height = Dimensions.get('window').height;
 
     return (
         <View style = { styles.logoContainer}>
-            <Image source = { LogoBY } style = { [styles.logo, { height: height * 0.15 }] }/>
+            <Image source = { isLogin ? LogoEV : LogoEVyellow } style = { [styles.logo, { height: height * 0.15 }] }/>
         </View>
     )
 }
@@ -18,8 +19,8 @@ const styles = StyleSheet.create({
         marginTop: 60,
     },
     logo: {
-        width: '36%',
-        maxWidth: 200,
+        width: '56%',
+        maxWidth: 250,
         maxHeight: 200,
-    }
+    },
 });

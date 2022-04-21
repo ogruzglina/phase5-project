@@ -26,7 +26,8 @@ export default function LoginForm({ navigation }) {
         { ({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
           <>
             <TextInput 
-              placeholder = 'Username or Email' 
+              placeholder = 'Email' 
+              placeholderTextColor="#999"
               autoCapitalize = 'none'
               autoFocus = { true }
               autoCorrect = { false }
@@ -34,10 +35,12 @@ export default function LoginForm({ navigation }) {
               textContentType = 'emailAddress'
               style = {[
                 styles.input, 
-                { borderColor: 
+                { 
+                  borderColor: 
                     values.email.length < 1 || Validator.validate(values.email) 
-                      ? '#aaa' 
-                      : 'red' 
+                      ? '#FCCF03' 
+                      : 'red',
+                  shadowColor: values.email.length < 1 || Validator.validate(values.email) ? "#ffb" : 'red' 
                 }
               ]} 
               onChangeText = { handleChange ('email') }
@@ -46,6 +49,7 @@ export default function LoginForm({ navigation }) {
             />
             <TextInput
               placeholder = 'Password' 
+              placeholderTextColor="#999"
               autoCapitalize = 'none'
               autoCorrect = { false }
               secureTextEntry = { true }
@@ -54,8 +58,9 @@ export default function LoginForm({ navigation }) {
                 styles.input, 
                 { borderColor: 
                     1 > values.password.length || values.password.length >= 6 
-                      ? '#aaa' 
-                      : 'red' 
+                      ? '#FCCF03' 
+                      : 'red',
+                  shadowColor: 1 > values.password.length || values.password.length >= 6 ? "#ffb" : 'red'
                 }
               ]} 
               onChangeText = { handleChange ('password') }
@@ -64,7 +69,7 @@ export default function LoginForm({ navigation }) {
             />
 
             <View style = {{ alignItems: 'flex-end', marginBottom: 30, marginRight: 13}}>
-              <Text style = {{color: 'blue'}}>Forgot password?</Text>
+              <Text style = {{color: '#20BE94', fontSize: 15}}>Forgot password?</Text>
             </View>
 
             <Pressable 
@@ -76,9 +81,9 @@ export default function LoginForm({ navigation }) {
             </Pressable>
 
             <View style = { styles.signupContainer }>
-              <Text>Don't have an account? </Text>
-              <TouchableOpacity style = {{ color: 'blue' }} onPress = {() => navigation.navigate('Signup')}>
-                <Text style = {{ color: 'blue' }}>Sign Up</Text>
+              <Text style = {{ color: '#F9FCE0', fontSize: 15 }}>Don't have an account? </Text>
+              <TouchableOpacity onPress = {() => navigation.navigate('Signup')}>
+                <Text style = {{ color: '#20BE94', fontSize: 15 }}>Sign Up</Text>
               </TouchableOpacity>
             </View>
           </>
@@ -94,17 +99,24 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: '#aaa',
+    color: '#F9FCE0',
+    backgroundColor: '#37314B',
     borderRadius: 30,
     margin: 10,
     padding: 10,
     textAlign: 'center',
     fontSize: 18,
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.83,
+    shadowRadius: 6,
   },
   button: (isValid) => ({
     borderWidth: 1,
-    borderColor: '#ff0',
-    backgroundColor: isValid ? '#ff0' : '#ffb',
+    backgroundColor: isValid ? '#FCCF03' : '#ffb',
+    borderColor: '#FCCF03',
     alignItems: 'center',
     justifyContent: 'center',
     height: 45,
@@ -115,6 +127,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     marginTop: 50,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    
   }
 });

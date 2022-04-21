@@ -88,6 +88,7 @@ export default function HomeBottomTabs({ route, navigation }) {
         component = { Login }
         options={{
           tabBarStyle: { display: "none" },
+          headerShown: false
        }}
       />
     </Tab.Navigator>

@@ -48,7 +48,8 @@ export default function SignupForm({ navigation }) {
         { ({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
           <>
             <TextInput 
-              placeholder = 'Username' 
+              placeholder = 'Username'
+              placeholderTextColor="#999" 
               autoCapitalize = 'none'
               autoFocus = { true }
               autoCorrect = { false }
@@ -57,8 +58,12 @@ export default function SignupForm({ navigation }) {
                 styles.input, 
                 { borderColor: 
                     1 > values.username.length || values.username.length >= 3  
-                        ? '#aaa' 
-                        : 'red' 
+                        ? '#20BE94' 
+                        : 'red',
+                  shadowColor: 
+                    1 > values.username.length || values.username.length >= 3 
+                      ? "#21C5BF" 
+                      : 'red'  
                 }
               ]} 
               onChangeText = { handleChange ('username') }
@@ -67,6 +72,7 @@ export default function SignupForm({ navigation }) {
             />
             <TextInput 
               placeholder = 'Email' 
+              placeholderTextColor="#999"
               autoCapitalize = 'none'
               autoCorrect = { false }
               keyboardType = 'email-address'
@@ -75,8 +81,12 @@ export default function SignupForm({ navigation }) {
                 styles.input, 
                 { borderColor: 
                     values.email.length < 1 || Validator.validate(values.email) 
-                      ? '#aaa' 
-                      : 'red' 
+                      ? '#20BE94' 
+                      : 'red',
+                  shadowColor: 
+                    values.email.length < 1 || Validator.validate(values.email) 
+                      ? "#21C5BF" 
+                      : 'red'   
                 }
               ]} 
               onChangeText = { handleChange ('email') }
@@ -84,7 +94,8 @@ export default function SignupForm({ navigation }) {
               value = { values.email } 
             />
             <TextInput
-              placeholder = 'Password' 
+              placeholder = 'Password'
+              placeholderTextColor="#999" 
               autoCapitalize = 'none'
               autoCorrect = { false }
               secureTextEntry = { true }
@@ -93,8 +104,12 @@ export default function SignupForm({ navigation }) {
                 styles.input, 
                 { borderColor: 
                     1 > values.password.length || values.password.length >= 6 
-                      ? '#aaa' 
-                      : 'red' 
+                      ? '#20BE94' 
+                      : 'red',
+                  shadowColor: 
+                    1 > values.password.length || values.password.length >= 6 
+                      ? "#21C5BF" 
+                      : 'red'  
                 }
               ]} 
               onChangeText = { handleChange ('password') }
@@ -103,6 +118,7 @@ export default function SignupForm({ navigation }) {
             />
             <TextInput
               placeholder = 'Confirm Password' 
+              placeholderTextColor="#999"
               autoCapitalize = 'none'
               autoCorrect = { false }
               secureTextEntry = { true }
@@ -111,7 +127,11 @@ export default function SignupForm({ navigation }) {
                 styles.input, 
                 { borderColor: 
                     1 > values.passwordConfirmation.length || values.passwordConfirmation.length >= 6 && values.passwordConfirmation === values.password
-                      ? '#aaa' 
+                      ? '#20BE94' 
+                      : 'red',
+                  shadowColor: 
+                    1 > values.passwordConfirmation.length || values.passwordConfirmation.length >= 6 && values.passwordConfirmation === values.password 
+                      ? "#21C5BF" 
                       : 'red' 
                 }
               ]} 
@@ -129,9 +149,9 @@ export default function SignupForm({ navigation }) {
             </Pressable>
 
             <View style = { styles.signupContainer }>
-              <Text>Already have an account? </Text>
-              <TouchableOpacity style = {{ color: 'blue' }} onPress = {() => navigation.navigate('Login')}>
-                <Text style = {{ color: 'blue' }}>Log In</Text>
+              <Text style = {{ color: '#F9FCE0', fontSize: 15 }}>Already have an account? </Text>
+              <TouchableOpacity onPress = {() => navigation.navigate('Login')}>
+                <Text style = {{ color: '#FCCF03', fontSize: 15 }}>Log In</Text>
               </TouchableOpacity>
             </View>
           </>
@@ -147,17 +167,24 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: '#aaa',
+    color: '#F9FCE0',
+    backgroundColor: '#37314B',
     borderRadius: 30,
     margin: 10,
     padding: 10,
     textAlign: 'center',
     fontSize: 18,
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.83,
+    shadowRadius: 6,
   },
   button: (isValid) => ({
     borderWidth: 1,
-    borderColor: '#ff0',
-    backgroundColor: isValid ? '#ff0' : '#ffb',
+    borderColor: '#21C5BF',
+    backgroundColor: isValid ? '#20BE94' : '#A1E3D8',
     alignItems: 'center',
     justifyContent: 'center',
     height: 45,
