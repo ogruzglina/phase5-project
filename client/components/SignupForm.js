@@ -190,6 +190,14 @@ const styles = StyleSheet.create({
     height: 45,
     borderRadius: 30,
     margin: 10,
+    marginTop: 20,
+    shadowColor: "#37314B",
+    shadowOffset: {
+        width: 0,
+        height: 5,
+    },
+    shadowOpacity: 0.83,
+    shadowRadius: 6,
   }),
   signupContainer: {
     flexDirection: 'row',
