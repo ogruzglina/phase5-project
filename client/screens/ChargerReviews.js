@@ -61,7 +61,7 @@ export default function ChargerReviews({ route }) {
         return (
           <View key = {r.reviewId} style = {{ marginBottom: 18 }}>
             <View style = {{ marginBottom: 5, flexDirection: 'row', }}>
-              <Image style={[styles.tinyAvatar, {marginRight: 20}]} source={{ url: r.userAvatar }} />
+              <Image style={[ styles.tinyAvatar, { marginRight: 20, borderRadius: 20 } ]} source={{ url: r.userAvatar }} />
               <Text style = {{ alignSelf: 'flex-end', color: '#20BE94', fontSize: 18, fontFamily: 'Inter_700Bold'}}>{r.userUsername}</Text>
             </View>
             <Text style = {{ color: '#edb', fontSize: 18, fontFamily: 'Merienda_400Regular'}}>{r.review}</Text>

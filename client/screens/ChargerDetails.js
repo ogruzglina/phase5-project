@@ -1,4 +1,4 @@
-import { View, Text, Button, StyleSheet, Dimensions } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Dimensions } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -9,10 +9,10 @@ export default function ChargerDetails({ navigation, route }) {
   const [ isAvailable, setIsAvailable ] = useState(status);
   let btnName, color, chargerStatus;
 
-  if (isAvailable === true) {
+  if (isAvailable) {
     chargerStatus = "available now";
     btnName = "Start charging";
-    color = "green";
+    color = "#06FF00";
   } else {
     chargerStatus = "not available now";
     btnName = "Stop charging";
@@ -38,15 +38,15 @@ export default function ChargerDetails({ navigation, route }) {
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={ styles.input}>{ charger_type }</Text>
-      <Text style={ styles.input}>{ address }</Text>
-      <Text style={ styles.input}>Cherger is available - { hours }</Text>
-      <Text style={ styles.input}>Cost per hour - $ {cost}</Text>
-      <Text style={ styles.input}>Fee - $ { fee }</Text>
-      <Text style={ styles.input}>Charger station is { chargerStatus }</Text>
+      <TextInput style={ styles.input }>{ charger_type }</TextInput>
+      <TextInput style={ styles.input }>{ address }</TextInput>
+      <TextInput style={ styles.input }>Cherger is available - { hours }</TextInput>
+      <TextInput style={ styles.input }>Cost per hour - $ {cost}</TextInput>
+      <TextInput style={ styles.input }>Fee - $ { fee }</TextInput>
+      <TextInput style={ styles.input }>Charger station is { chargerStatus }</TextInput>
 
       <View style = {{ marginTop: '10%' }}>
-        <Button  
+        <Button            
             title = { btnName }
             color = { color }
             onPress = { () => setIsAvailable(!isAvailable) } 
@@ -61,34 +61,24 @@ const styles = StyleSheet.create({
     marginTop: 80,
   },
   input: {
-    //borderWidth: 1,
-   // borderColor: '#aaa',
-    
-    // borderRadius: 24,
-    // margin: 10,
-    // padding: 10,
-    // textAlign: 'center',
-    // fontSize: 18,
-    // color: 'white',
-
-//backgroundColor: '#1F1B2F',
-              borderWidth: 1.5,
-        borderColor: '#20BE94',
-        color: '#F9FCE0',
-        borderRadius: 22,
-        width: width/1.2,
-        marginVertical: 6,
-        padding: 8,
-        textAlign: 'center',
-        fontSize: 18,
-        color: 'white',
-        shadowColor: "#21C5BF",
-      shadowOffset: {
-        width: 0,
-        height: 5,
-      },
-      shadowOpacity: 0.83,
-      shadowRadius: 6,
+    backgroundColor: '#1F1B2F',
+    borderWidth: 1.5,
+    borderColor: '#20BE94',
+    color: '#F9FCE0',
+    borderRadius: 22,
+    width: width/1.2,
+    marginVertical: 6,
+    padding: 8,
+    textAlign: 'center',
+    fontSize: 18,
+    color: 'white',
+    shadowColor: "#21C5BF",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.83,
+    shadowRadius: 6,
   },
   button: (isValid) => ({
     borderWidth: 1,
@@ -102,11 +92,8 @@ const styles = StyleSheet.create({
   }),
   container: {
     flex: 1,
-    //flexDirection: 'column',
     width: '100%',
     marginTop: 50,
     justifyContent: 'center'
-
-    //flex: 1, alignItems: 'center', justifyContent: 'center'
   }
 });

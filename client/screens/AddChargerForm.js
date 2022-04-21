@@ -97,13 +97,6 @@ export default function AddChargerForm({ navigation, currentUserId, setCurrentUs
                     />
                 
                 <View style = {{ marginTop: '10%' }}>
-                    {/* <Button  
-                        style = {styles.button}
-                        title="Submit"
-                        color = 'green'
-                        onPress = { () => handleSubmit() } 
-                    /> */}
-
 
                     <Pressable 
                         style = { styles.button } 
@@ -119,16 +112,9 @@ export default function AddChargerForm({ navigation, currentUserId, setCurrentUs
 }
 
 const styles = StyleSheet.create({
-    inputContainer: {
-      backgroundColor: 'rgba(255, 255, 255, 1)',
-      padding: 20,
-      marginTop: -height/1.6,
-      borderRadius: 20,
-      width: width/1.1,
-      height: height/2,
-    },
     input: {
         borderWidth: 1.5,
+        backgroundColor: '#1F1B2F',
         borderColor: '#20BE94',
         color: '#F9FCE0',
         borderRadius: 30,
@@ -156,6 +142,13 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         margin: 10,
         width: width/1.2,
-        marginLeft: 0
+        marginLeft: 0,
+        shadowColor: "#1F1B2F",
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.83,
+        shadowRadius: 6,
     },
   });
