@@ -216,7 +216,7 @@ export default function Map({ chargers, navigation }) {
   return (
     <View>
       <MapView 
-        //customMapStyle = { mapStyle }
+        customMapStyle = { mapStyle }
         style = {{ height: Dimensions.get('window').height }}
         provider = { PROVIDER_GOOGLE }
         showsUserLocation = { true }
@@ -225,8 +225,8 @@ export default function Map({ chargers, navigation }) {
         initialRegion = {{
           latitude: location.latitude, 
           longitude: location.longitude,
-          latitudeDelta: 65.2,
-          longitudeDelta: 65
+          latitudeDelta: 60.2,
+          longitudeDelta: 60
         }}
       >{/*charging-station or bolt*/}
         { chargers.map((charger, index) => 

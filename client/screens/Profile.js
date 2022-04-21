@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, Button, Dimensions } from 'react-native'
+import { View, Text, Image, StyleSheet, TextInput, Dimensions } from 'react-native'
 import React, { useState, useEffect } from 'react'
 
 const height = Dimensions.get('window').height;
@@ -15,12 +15,16 @@ export default function Profile({ currentUser, currentUserChargers, navigation }
         style = { styles.tinyLogo }
         source={{ url: currentUser.avatar }}
       />
-      <Text style = { styles.input }>{ currentUser.username }</Text>
-      <Text style = { styles.input }>{ currentUser.email }</Text>
-      
-      <View style = {{marginTop: 10}}>
+      <TextInput style = { styles.input }>{ currentUser.username }</TextInput>
+      <TextInput style = { styles.input }>{ currentUser.email }</TextInput>
+      { 
+        currentUserChargers.length !== 0 
+          ? <Text style = {{textAlign: 'center', fontSize: 18, color: 'gold', marginTop: 10}}>Chargers:</Text> 
+          : null
+      }
+      <View >
         { currentUserChargers.map( charger => 
-          <Text key = { charger.id } style = { styles.input }>{ charger.charger_type }</Text> 
+          <TextInput key = { charger.id } style = { styles.input }>{ charger.charger_type }</TextInput> 
         )}
       </View>
 
@@ -34,25 +38,17 @@ export default function Profile({ currentUser, currentUserChargers, navigation }
 }
 
 const styles = StyleSheet.create({
-  // container: {
-  //   paddingTop: 50,
-  // },
   tinyLogo: {
-    width: 50,
-    height: 50,
-    justifyContent: 'center'
+    width: 70,
+    height: 70,
+    borderRadius: 20,
+    justifyContent: 'center', 
+    marginBottom: 10,
   },
-  // logo: {
-  //   width: 66,
-  //   height: 58,
-  // },
-    // wrapper: {
-    //   marginTop: 80,
-    // },
     input: {
       borderWidth: 2,
-      borderColor: '#20BE94',//'#025E73',
-      //backgroundColor: '#1F1B2F',
+      backgroundColor: '#1F1B2F',
+      borderColor: '#20BE94',
       borderRadius: 20,
       margin: 6,
       padding: 8,
@@ -68,16 +64,5 @@ const styles = StyleSheet.create({
       },
       shadowOpacity: 0.83,
       shadowRadius: 6,
-      //elevation: 3,
     },
-    // button: (isValid) => ({
-    //   borderWidth: 1,
-    //   borderColor: '#ff0',
-    //   backgroundColor: isValid ? '#ff0' : '#ffb',
-    //   alignItems: 'center',
-    //   justifyContent: 'center',
-    //   height: 45,
-    //   borderRadius: 30,
-    //   margin: 10,
-    // }),
 });
