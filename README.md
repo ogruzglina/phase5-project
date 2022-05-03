@@ -1,24 +1,30 @@
-# README
+# ChargerHood
+This is an app that can help for people who want:
+- to share your own EV charger,
+- to find EV charger.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+AS a user you can:
 
-Things you may want to cover:
+- open details about charger, change status for this charger, look at reviews and leave a review
 
-* Ruby version
+<img src="client/assets/images/ChargerHood.gif" width="500">
 
-* System dependencies
+- add charger and see it in your profile page and map
+<img src="client/assets/images/AddCharger.gif" width="500">
 
-* Configuration
+This is version 0.1 of this app, to be continued :)
 
-* Database creation
 
-* Database initialization
+ 
+## Technologies Used
+ - Front-end: React Native Expo CLI, GoogleMap API, CSS
+ - Back-end: Ruby on Rails
+ - Database: PostgreSQL
 
-* How to run the test suite
+## Authors
+_**Olha Gruzglina**_
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contact Information
 
-* Deployment instructions
-
-* ...
+- [Olha's Github](https://github.com/ogruzglina "Olha Gruzglina")
+- [Olha's Linkedin](https://www.linkedin.com/in/olha-gruzglina-a4403b53/ "Olha Gruzglina")
