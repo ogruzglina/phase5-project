@@ -5,7 +5,7 @@ import axios from 'axios'
 export default function App() {
   const [ currentUser, setCurrentUser ] = useState(null);
 
-  const tempUserId = 13;
+  const tempUserId = 5;
 
   useEffect(async () => {
     try {
